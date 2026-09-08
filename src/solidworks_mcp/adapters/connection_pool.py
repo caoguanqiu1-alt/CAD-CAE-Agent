@@ -497,6 +497,12 @@ class ConnectionPoolAdapter(SolidWorksAdapter):
             "close_model", lambda adapter: adapter.close_model(save)
         )
 
+    async def rebuild_model(self) -> AdapterResult[None]:
+        """Forward the existing COM rebuild operation for the MCP host."""
+        return await self._execute_with_pool(
+            "rebuild_model", lambda adapter: adapter.rebuild_model()
+        )
+
     async def save_file(self, file_path: str | None = None) -> AdapterResult[None]:
         """Save model using pool.
 

@@ -41,7 +41,7 @@ _sw_comtypes_lib: Any = None
 def _get_sw_comtypes_lib() -> Any:
     """Return the comtypes wrapper for the SolidWorks type library.
 
-    Tries SW version numbers 35..30 (newest to oldest). Returns ``None`` when
+    Tries SW version numbers 35..28 (newest to oldest). Returns ``None`` when
     comtypes is unavailable or the TLB cannot be found in the registry.
     """
     global _sw_comtypes_lib
@@ -49,7 +49,8 @@ def _get_sw_comtypes_lib() -> Any:
         return _sw_comtypes_lib
     if not _COMTYPES_AVAILABLE:
         return None
-    for major in (35, 34, 33, 32, 31, 30):  # pragma: no cover
+    # SW2020 compatibility: include type library 28 for typed geometry access.
+    for major in (35, 34, 33, 32, 31, 30, 29, 28):  # pragma: no cover
         try:
             _sw_comtypes_lib = _comtypes_client.GetModule(
                 (comtypes.GUID(_SW_TLB_GUID), major, 0)
@@ -1482,6 +1483,30 @@ class SolidWorksIOMixin:
 
         def _get_info() -> dict[str, Any]:
             """Get model information."""
+            # Integration verification: report actual SW2020 geometry via COM,
+            # rather than echoing the modelling tool's requested dimensions.
+            geometry: dict[str, Any] = {}
+            if adapter._get_document_type() == "Part":
+                try:
+                    bodies = adapter.currentModel.GetBodies2(0, False) or ()
+                    geometry["solid_body_count"] = len(bodies)
+                    vertices = []
+                    for body in bodies:
+                        _sw_type_info.flag_methods(body, "IBody2")
+                        for vertex in body.GetVertices() or ():
+                            _sw_type_info.flag_methods(vertex, "IVertex")
+                            vertices.append(tuple(vertex.GetPoint()))
+                    geometry["vertex_count"] = len(vertices)
+                    if vertices:
+                        low = [min(p[i] for p in vertices) * 1000 for i in range(3)]
+                        high = [max(p[i] for p in vertices) * 1000 for i in range(3)]
+                        geometry["vertex_bounds_mm"] = {"min": low, "max": high}
+                        geometry["vertex_extents_mm"] = [high[i] - low[i] for i in range(3)]
+                    # Vertex bounds are exact for polyhedra. Curved surfaces
+                    # can extend beyond their vertices; do not call these a
+                    # general analytic-body bounding box.
+                except Exception as exc:
+                    geometry["geometry_read_error"] = str(exc)
             # With late-bound SolidWorks COM, GetActiveConfiguration is
             # exposed as an object-valued property even though the API names
             # it like a method. Calling that COM object raises "member not
@@ -1522,6 +1547,7 @@ class SolidWorksIOMixin:
                 "is_dirty": is_dirty,
                 "feature_count": feature_count,
                 "rebuild_status": rebuild_status,
+                **geometry,
             }
 
         return cast(

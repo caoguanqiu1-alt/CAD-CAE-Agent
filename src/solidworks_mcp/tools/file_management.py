@@ -688,6 +688,19 @@ async def register_file_management_tools(
             return None, str(exc)
 
     @mcp.tool()
+    async def rebuild_model() -> dict[str, Any]:
+        """Rebuild the active SolidWorks document via ForceRebuild3.
+
+        Local SW2020 integration: expose the existing real COM adapter
+        operation so MCP hosts can explicitly rebuild without a macro or UI.
+        """
+        result = await adapter.rebuild_model()
+        return {
+            "status": "success" if result.is_success else "error",
+            "message": "ForceRebuild3 completed" if result.is_success else result.error,
+        }
+
+    @mcp.tool()
     async def save_file(input_data: SaveFileInput) -> dict[str, Any]:
         """Save the current SolidWorks model.
 

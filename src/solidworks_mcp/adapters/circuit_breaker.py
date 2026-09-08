@@ -358,6 +358,12 @@ class CircuitBreakerAdapter(SolidWorksAdapter):
             input_dict={"save": save},
         )
 
+    async def rebuild_model(self) -> AdapterResult[None]:
+        """Forward the existing COM rebuild operation for the MCP host."""
+        return await self._execute_with_circuit_breaker(
+            "rebuild_model", lambda: self.adapter.rebuild_model(), input_dict={}
+        )
+
     async def save_file(self, file_path: str | None = None) -> AdapterResult[None]:
         """Save model through circuit breaker.
 

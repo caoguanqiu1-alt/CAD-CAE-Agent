@@ -67,7 +67,7 @@ def _load_wrapper() -> None:
 
     Tries ``GetModuleForTypelib`` first (fast path, no COM work), falls back
     to ``EnsureModule`` (may trigger makepy generation), then gives up and
-    logs a warning. Probes common SW major versions (33..30) because the
+    logs a warning. Probes common SW major versions (35..28) because the
     minor/major numbers change per SW year.
     """
     global _wrapper_module, _interface_methods
@@ -76,8 +76,9 @@ def _load_wrapper() -> None:
         return
 
     # Try version numbers from newest to oldest. SW 3DEXPERIENCE R2026x = 34,
-    # SW 2025 = 33, SW 2024 = 32, SW 2023 = 31, SW 2022 = 30.
-    for major in (35, 34, 33, 32, 31, 30):
+    # SW 2025 = 33, SW 2024 = 32, SW 2023 = 31, SW 2022 = 30, SW 2020 = 28.
+    # SW2020 compatibility: its registered type-library major is 28 (1c.0).
+    for major in (35, 34, 33, 32, 31, 30, 29, 28):
         try:
             mod = gencache.GetModuleForTypelib(SW_TLB_IID, 0, major, 0)
         except Exception:
@@ -88,7 +89,7 @@ def _load_wrapper() -> None:
 
     if _wrapper_module is None:  # pragma: no cover
         # Gen_py wrapper not generated yet — try to generate now.
-        for major in (35, 34, 33, 32, 31, 30):
+        for major in (35, 34, 33, 32, 31, 30, 29, 28):
             try:
                 gencache.EnsureModule(SW_TLB_IID, 0, major, 0)
                 _wrapper_module = gencache.GetModuleForTypelib(SW_TLB_IID, 0, major, 0)

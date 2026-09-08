@@ -277,6 +277,24 @@ class _ComSessionCoordinator:
         """
         self._adapter.swApp = None
         last_error: Exception | None = None
+        # SW2020 compatibility: --year 2020 maps to SldWorks.Application.28.
+        # Verify generic ROT attachments too, so another installed release is
+        # never silently used instead of the requested year.
+        requested_year = self._adapter.config.get("solidworks_year")
+        expected_major = int(requested_year) - 1992 if requested_year else None
+        prog_id = (
+            f"SldWorks.Application.{expected_major}"
+            if expected_major is not None else "SldWorks.Application"
+        )
+
+        def matches_year(app: Any) -> bool:
+            if app is None:
+                return False
+            if expected_major is None:
+                return True
+            revision = self._adapter._get_attr_or_call(app, "RevisionNumber")
+            return int(str(revision).split(".")[0]) == expected_major
+
         # Force late binding (dynamic.Dispatch) — the gen_py wrapper provides
         # method-name lookup for flag_methods but early-bound dispatches
         # reject VARIANT pass-by-ref params used by OpenDoc6 and friends.
@@ -284,15 +302,15 @@ class _ComSessionCoordinator:
             try:
                 raw = win32com.client.GetActiveObject("SldWorks.Application")
                 app = _dynamic_dispatch(raw) if raw is not None else None
-                if app is not None:
+                if matches_year(app):
                     self._adapter.swApp = app
                     return app
             except pywintypes.com_error as active_error:
                 last_error = active_error
 
             try:
-                app = _dynamic_dispatch("SldWorks.Application")
-                if app is not None:
+                app = _dynamic_dispatch(prog_id)
+                if matches_year(app):
                     self._adapter.swApp = app
                     return app
             except pywintypes.com_error as dispatch_error:
