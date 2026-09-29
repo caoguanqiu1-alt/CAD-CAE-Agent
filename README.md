@@ -1,4 +1,4 @@
-# CAD-CAE — SolidWorks 建模与仿真 Agent
+# CAD-CAE Agent — SolidWorks 建模与仿真
 
 本项目在 [andrewbartels1/SolidworksMCP-python](https://github.com/andrewbartels1/SolidworksMCP-python)
 的 MIT 开源基础上增加了实际运行于 **SOLIDWORKS 2020 SP5** 的建模与静力分析工作流。

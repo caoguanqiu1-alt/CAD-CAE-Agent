@@ -1,4 +1,4 @@
-# CAD-CAE — SolidWorks 建模与仿真 Agent 原型
+# CAD-CAE Agent — SolidWorks 建模与仿真原型
 
 ## 已实现和实跑的范围
 
@@ -24,8 +24,8 @@ SOLIDWORKS 2020 / Simulation 完成建模和有限元求解。单独启动 MCP �
 需要从自己的 SOLIDWORKS 安装目录读取 `sldworks`、`swconst`、`cosworks` 三个 Interop DLL。
 
 ```powershell
-git clone https://github.com/caoguanqiu1-alt/CAD-CAE.git
-cd CAD-CAE
+git clone https://github.com/caoguanqiu1-alt/CAD-CAE-Agent.git
+cd CAD-CAE-Agent
 py -3.13 -m venv .venv
 & .\.venv\Scripts\python.exe -m pip install -e .
 $env:SW2020_INSTALL_DIR = 'C:\Program Files\SOLIDWORKS Corp\SOLIDWORKS'
@@ -37,15 +37,15 @@ powershell -NoProfile -File .\simulation\build.ps1 -InstallDir $env:SW2020_INSTA
 
 ## MCP 配置示例
 
-把 `C:/path/to/CAD-CAE` 替换为克隆目录：
+把 `C:/path/to/CAD-CAE-Agent` 替换为克隆目录：
 
 ```json
 {
   "mcpServers": {
     "solidworks": {
-      "command": "C:/path/to/CAD-CAE/.venv/Scripts/python.exe",
-      "args": ["C:/path/to/CAD-CAE/src/utils/start_sw2020_stable.py", "--real", "--year", "2020"],
-      "cwd": "C:/path/to/CAD-CAE",
+      "command": "C:/path/to/CAD-CAE-Agent/.venv/Scripts/python.exe",
+      "args": ["C:/path/to/CAD-CAE-Agent/src/utils/start_sw2020_stable.py", "--real", "--year", "2020"],
+      "cwd": "C:/path/to/CAD-CAE-Agent",
       "env": {"SW2020_INSTALL_DIR": "C:/Program Files/SOLIDWORKS Corp/SOLIDWORKS", "PYTHONIOENCODING": "utf-8"}
     }
   }
