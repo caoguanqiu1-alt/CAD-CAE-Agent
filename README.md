@@ -1,375 +1,67 @@
 # CAD-CAE Agent — SolidWorks 建模与仿真
 
-本项目在 [andrewbartels1/SolidworksMCP-python](https://github.com/andrewbartels1/SolidworksMCP-python)
-的 MIT 开源基础上增加了实际运行于 **SOLIDWORKS 2020 SP5** 的建模与静力分析工作流。
-保留上游版权及历史；本分支新增能力、验证范围和限制见下方入口。
+**中文文档 V2（2026-09-29）**
 
-- **[中文安装与演示说明](README_CAE.md)**：真实 COM/MCP 调用、149 个注册工具（其中 8 个仿真工具）。
-- **[仿真计划接口](SIMULATION_PHASE3.md)**：多向多载荷、销轴接触、网格检查、URES 云图及原生结果归档。
-- **[本机验证记录](docs/cae/verification.md)**：真实求解数值、重新连接回读、测试范围与未收敛项。
-- **[第三届 DGX Spark 黑客松适配评估](docs/cae/hackathon-readiness.md)**：方向匹配，DGX 本地推理和跨机执行尚未验证。
+本项目基于 [andrewbartels1/SolidworksMCP-python](https://github.com/andrewbartels1/SolidworksMCP-python) 的 MIT 开源代码，扩展了在 **SOLIDWORKS 2020 SP5** 上运行的参数化建模和 Simulation 静力分析流程。保留上游版权及许可证；[上游英文说明](README.en.md)单独存档。
 
 ![真实 SOLIDWORKS 合位移结果](docs/cae/assets/pin-guided-ures.png)
 
-> 这是一套有边界的 CAD-CAE Agent 原型，覆盖建模与仿真。位移收敛不代表峰值应力或接触压力收敛；示例载荷和外部导向约束不能替代真实设备工况。SOLIDWORKS、Simulation 及其 Interop DLL 需自行合法安装，不随仓库分发。
+## 从 API 绘图到 CAD-CAE Agent
 
-## Upstream project documentation
+最初的本机目标是通过 C# COM API 直接控制 SOLIDWORKS，生成 `Sketch1 → Boss-Extrude1`，并检查一个 100 × 60 × 10 mm 零件。现在的流程由 AI 客户端规划，MCP 暴露工具，Windows 上的 SOLIDWORKS COM 与 Simulation 执行建模、求解和结果回读。MCP 是工具接口；单独启动 MCP 不会形成独立自主的 Agent。
 
-**Languages:** [English](README.md) | [Español](README.es-ES.md)
+详细的时间线、证据和差异见 [API 绘图到 CAD-CAE Agent：版本 V2](docs/API绘图到CAD-CAE-Agent_演进_V2.md)。
 
-[![Python 3.13+](https://img.shields.io/badge/python-3.13+-blue.svg)](https://www.python.org/downloads/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Windows](https://img.shields.io/badge/Windows-10%2F11-blue?logo=windows)](https://www.microsoft.com/windows)
-[![SolidWorks](https://img.shields.io/badge/SolidWorks-2019--2026-red)](https://www.solidworks.com/)
-[![Coverage](https://codecov.io/gh/andrewbartels1/SolidworksMCP-python/branch/main/graph/badge.svg)](https://codecov.io/gh/andrewbartels1/SolidworksMCP-python)
+## 项目概览
 
-The upstream Python MCP server provides the CAD runtime and optional agent/prompt-testing layer. The SW2020 stable entrypoint in this repository additionally registers the modeling and Simulation extensions described above.
+本项目以可检查的迭代流程组织 SOLIDWORKS 自动化：
 
-## Overview
+1. 描述几何或工程意图，明确尺寸、材料、载荷和约束。
+2. 由 AI 客户端制定建模或仿真步骤。
+3. 调用 MCP 工具，由 COM API 在真实 SOLIDWORKS 中执行。
+4. 回读特征树、实体、研究、求解结果和输出文件。
+5. 对失败或异常结果定位原因，再修正计划。
 
-> ⚠️ **Project Status:** This project is under active construction. Features, APIs, documentation, and setup steps may change as the Python and UI implementation is finalized. This is a hobby/research product, please feel free to make an issue if you have questions or feedback! ⚠️
+上游提供 Python MCP 服务、COM/VBA 适配与安全封装，以及草图、建模、工程图、分析、导出、自动化、模板和宏工具；可选的 Agent 编排与提示词测试代码位于 `src/solidworks_mcp/agents/`。本仓库增加了 SW2020 稳定入口、建模守卫和 Simulation 静力扩展。上游的功能目录与本仓库的**实测范围**应分别阅读。
 
-This project focuses on practical SolidWorks automation with an AI-friendly loop:
+## 已实现与验证
 
-1. describe intent
-2. generate a plan
-3. execute MCP tools
-4. inspect results
-5. iterate
+| 能力 | 本机证据 |
+| --- | --- |
+| 直接 COM 建模 | 实测创建、重建并保存 `Sketch1 → Boss-Extrude1`；几何为 100 × 60 × 10 mm，体积 60,000 mm³。 |
+| MCP 建模 | SW2020 真实模式下完成工具调用、实体与特征回读；工具发现保持 COM 延迟连接。 |
+| 静力分析 | 本机 SW2020 SP5 / Simulation 完成多载荷、多网格、URES(mm) 云图及原生结果归档。 |
+| 销轴接触 | 三实体、两组无穿透接触；位移相邻网格变化低于 1%，峰值应力未达到同一收敛标准。 |
+| 重新连接 | 两次新 stdio 连接均发现 149 个工具，其中 8 个为仿真工具；原生研究和结果可回读。 |
 
-It includes:
+本机验证细节：[安装与演示](README_CAE.md) · [仿真计划接口](SIMULATION_PHASE3.md) · [数值和限制](docs/cae/verification.md) · [SW2020 兼容性](SW2020_COMPAT.md)。
 
-- core MCP runtime for SolidWorks tool execution
-- COM/VBA routing and adapter safety wrappers
-- tool coverage across modeling, sketching, drawing, analysis, export, automation, templates, and macros
-- optional agent orchestration/testing utilities under `src/solidworks_mcp/agents/`
+## 当前边界
 
-## Supported Today
+- Mock 适配器的输出是模拟值，不能作为工程结论。
+- 实时 3D 视口流、逐检查点的干涉验证、流体分析及本静力扩展范围外的仿真类型尚未验证；简单 SimulationXpress 拓扑优化也不属于已验证能力。
+- 示例销轴工况的 1000 N 载荷、零间隙、无摩擦和外部导向是建模假设。位移收敛不能证明峰值应力、局部接触压力、疲劳或真实设备安全性。
+- 不能将示例面 ID、约束和载荷直接套用到其他零件；任意零件自动选面和自动识别实际安装方式尚未验证。
 
-- Windows + SolidWorks COM automation for the main CAD lifecycle.
-- Modeling, sketching, drawing, analysis, export, automation, templates, and macro tools.
+## 环境与快速开始
 
-## Not Yet / Simulated
-
-- Mock adapter output is simulated and should not be treated as engineering truth.
-- Live 3D viewport streaming in a UI.
-- Checkpoint-level interference validation.
-- Fluid workflows and simulation types outside the bounded SW2020 static extension
-- Simple Topology Optimization via SimulationXpress etc.
-
-## What Works (Verified Windows Setup)
-
-This is the setup path validated end-to-end:
-
-1. Install Python from python.org (Windows installer).
-2. Enable **Add python.exe to PATH** during install.
-3. Install this project into a local `.venv`.
-4. Launch MCP from `.venv\Scripts\python.exe` (not from WSL).
-
-When this is correct, startup logs show:
-
-- `Platform: Windows`
-- `SolidWorks COM interface is available`
-- `Registered ... SolidWorks tools` (count varies as tools evolve)
-- `Connected to SolidWorks`
-
-## Requirements
-
-- Windows 10/11 for real SolidWorks COM automation.
-- Python 3.13+ from python.org.
-- Git.
-- SolidWorks installed and launched at least once.
-
-Linux/WSL is useful for docs/tests/mock mode, but not for direct COM automation.
-
-## Quick Start (Windows, python.org)
+真实 COM 自动化需要 Windows、Python 3.13+、Git，以及已合法安装的 SOLIDWORKS。**本仓库的新增能力实测于 SW2020 SP5；上游徽章中的其他年份不代表本仓库已逐一验证。** Linux/WSL 可用于文档、测试和 Mock 模式，不能直接执行 Windows COM 自动化。
 
 ```powershell
-git clone https://github.com/andrewbartels1/SolidworksMCP-python.git
-cd SolidworksMCP-python
-
-python -m venv .venv
-.\.venv\Scripts\python.exe -m pip install --upgrade pip setuptools wheel
-.\.venv\Scripts\python.exe -m pip install -e .
+git clone https://github.com/caoguanqiu1-alt/CAD-CAE-Agent.git
+cd CAD-CAE-Agent
+py -3.13 -m venv .venv
+& .\.venv\Scripts\python.exe -m pip install -e .
+$env:SW2020_INSTALL_DIR = 'C:\Program Files\SOLIDWORKS Corp\SOLIDWORKS'
+powershell -NoProfile -File .\simulation\build.ps1 -InstallDir $env:SW2020_INSTALL_DIR
 ```
 
-Start server manually:
+将安装目录改为自己的实际路径。真实执行使用 `src/utils/start_sw2020_stable.py --real --year 2020`；MCP 初始化与工具列表不应启动 SOLIDWORKS，首次实际工具调用才连接 COM。Simulation 还需要本机可用的 SOLIDWORKS Simulation 与对应 Interop DLL。完整 MCP 配置和调用步骤见 [中文安装与演示说明](README_CAE.md)；上游通用客户端配置、开发命令及功能开关见 [英文原文](README.en.md)。
 
-```powershell
-.\.venv\Scripts\python.exe -m solidworks_mcp.server
-```
+项目持续开发，接口、文档和安装步骤可能调整。SOLIDWORKS、Simulation 及其 Interop DLL 不随仓库分发。
 
-Or use the helper script (open SolidWorks first):
+## 文档与许可
 
-```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File .\deployment\run-mcp.ps1 --real --year 2026
-```
-
-> **Mock mode warning** — running `run-mcp.ps1` without `--real` starts the
-> server in mock mode.  All tool responses are simulated; nothing touches
-> SolidWorks.  Always pass `--real --year <year>` for live automation.
-
-## Development Commands
-
-Use the helper script for common workflows:
-
-```powershell
-.\dev-commands.ps1
-```
-
-Common commands:
-
-- `dev-install` - install/update local dev environment
-- `dev-test` - run standard test suite (CI-safe subset)
-- `dev-test-full` - run full test suite (includes smoke/integration paths)
-- `dev-lint` - lint checks
-- `dev-format` - format code
-- `dev-docs-build` - build docs site once
-- `dev-docs-strict` - strict docs build (fails on warnings)
-- `dev-docs-audit` - generate docs audit report in `.generated/docs`
-
-### Local CI Replica (Docker)
-
-To mirror GitHub Actions CI locally (Ubuntu + conda env from `solidworks_mcp.yml` + `make test`), run:
-
-```powershell
-.\run-ci-local.ps1
-```
-
-The first run builds the image. Re-run without rebuild when only executing tests:
-
-```powershell
-.\run-ci-local.ps1 -NoBuild
-```
-
-## MCP Client Configuration (Windows)
-
-There are two parallel sets of launch scripts, both in `deployment/`:
-
-- `deployment/run-mcp.ps1` / `src/utils/start_local_server.py` — the local
-  dev/demo harness: decorative startup banners, an HTTP health-check step,
-  and an example tool-call workflow. Good for running by hand in a terminal
-  to see what the server does. **Not recommended for MCP host configs** — a
-  stdio MCP host treats a spawned server's stdout as a pure JSON-RPC
-  channel, and this script's banner output goes to stdout.
-- `deployment/run-mcp-claude.ps1` / `src/utils/start_local_server_claude.py`
-  — a minimal entrypoint with no decorative output, meant specifically for
-  MCP host configs (Claude Desktop, Claude Code, VS Code, LM Studio). Use
-  these for any host config below.
-
-> **If a tool call fails with an error like `invalid_union` / "expected
-> object, received string"** — that's the client's JSON-RPC parser choking
-> on non-JSON text. It almost always means the config's `args` point at
-> `start_local_server.py` (or `run-mcp.ps1`) instead of the `_claude`
-> variant. This is easy to hit after editing a config by hand or letting a
-> client's own "fix it for me" assistant rewrite the command: it may resolve
-> the path to the plain script by filename guess. Check the exact filename
-> in your config against the list above.
-
-MCP hosts spawn servers over raw stdio pipes with no console attached.
-Windows PowerShell's native-command invocation is unreliable in that exact
-scenario — `run-mcp-claude.ps1`'s venv-detection step uses `Start-Process`
-instead of piping to `Out-Null` to avoid it (piping a native command's
-output makes it a pipeline stage, which throws `Cannot run a document in
-the middle of a pipeline` when there's no console attached to the host
-process). If you still hit connection failures with it, point the client
-directly at the venv's `python.exe` instead, which skips PowerShell
-entirely.
-
-### Claude Desktop
-
-Claude Desktop reads its MCP server list from a `claude_desktop_config.json` file. The path depends on how the app was installed:
-
-- Classic/legacy installs: `%APPDATA%\Claude\claude_desktop_config.json`
-- Packaged (MSIX-style) installs: `%LOCALAPPDATA%\Packages\Claude_<hash>\LocalCache\Roaming\Claude\claude_desktop_config.json` — look under `%LOCALAPPDATA%\Packages\` for a folder starting with `Claude_` if the classic path doesn't exist.
-
-Create the file if it doesn't exist yet, and use the server key `solidworks` (the troubleshooting runbook in [CLAUDE.md](CLAUDE.md) and the app's own log filenames assume this name). If the file already has other top-level keys (preferences, etc.), just add `mcpServers` alongside them — don't replace the file:
-
-```json
-{
-  "mcpServers": {
-    "solidworks": {
-      "command": "C:\\path\\to\\SolidworksMCP-python\\.venv\\Scripts\\python.exe",
-      "args": [
-        "C:\\path\\to\\SolidworksMCP-python\\src\\utils\\start_local_server_claude.py",
-        "--real",
-        "--year",
-        "2026"
-      ]
-    }
-  }
-}
-```
-
-Replace the paths with your local repository path. The `--real --year 2026` flags start the server in live COM automation mode (requires SolidWorks already open). Omit them for mock mode.
-
-After saving, **fully quit Claude Desktop** (not just close the window — use File > Exit or the tray icon) and relaunch it so it reloads the MCP server list. To confirm it picked up the server:
-
-- In the app, open **Settings > Developer** and check that `solidworks` is listed and connected.
-- Or check `%LOCALAPPDATA%\Claude\Logs\mcp-server-solidworks.log` for a full `initialize` / `tools/list` round trip.
-- Tool-call errors are logged separately; see [Troubleshooting Runbook](CLAUDE.md#troubleshooting-runbook) in CLAUDE.md if the server appears but tool calls fail.
-
-### VS Code
-
-Set your user MCP config (`%APPDATA%\Code\User\mcp.json`) to:
-
-```json
-{
-  "servers": {
-    "solidworks-mcp-server": {
-      "type": "stdio",
-      "command": "powershell",
-      "args": [
-        "-NoProfile",
-        "-ExecutionPolicy",
-        "Bypass",
-        "-File",
-        "C:\\path\\to\\SolidworksMCP-python\\deployment\\run-mcp.ps1",
-        "--real",
-        "--year",
-        "2026"
-      ]
-  },
-  "inputs": []
-}
-```
-
-Replace the script path with your local repository path.  The `--real --year 2026` flags start the server in live COM automation mode (requires SolidWorks open).  Omit them for mock mode.
-
-If this doesn't connect (see the note above about stdio hosts and stdout), switch to the MCP-host-safe wrapper below.
-
-#### Recommended for MCP use: run-mcp-claude.ps1
-
-```json
-{
-  "servers": {
-    "solidworks-mcp-server": {
-      "type": "stdio",
-      "command": "powershell",
-      "args": [
-        "-NoProfile",
-        "-ExecutionPolicy",
-        "Bypass",
-        "-File",
-        "C:\\path\\to\\SolidworksMCP-python\\deployment\\run-mcp-claude.ps1",
-        "--real",
-        "--year",
-        "2026"
-      ]
-  },
-  "inputs": []
-}
-```
-
-### LM Studio
-
-Set your LM Studio MCP config file to include this server (LM Studio expects `mcpServers`):
-
-```json
-{
-  "mcpServers": {
-    "solidworks-mcp-server": {
-      "command": "C:\\path\\to\\SolidworksMCP-python\\.venv\\Scripts\\python.exe",
-      "args": [
-        "C:\\path\\to\\SolidworksMCP-python\\src\\utils\\start_local_server_claude.py",
-        "--real",
-        "--year",
-        "2026"
-      ]
-    }
-  }
-}
-```
-
-After saving, restart LM Studio so it reloads MCP servers.
-
-## Optional Features (environment toggles)
-
-All off/default unless set. Pass these as environment variables when launching
-the server (or in your MCP host config's `env` block); every
-`SOLIDWORKS_MCP_<FIELD>` maps to a config field of the same name.
-
-### SolidWorks-as-Code session logging — **off by default**
-
-Logs every adapter tool call to a local SQLite database so a session can be
-replayed or exported as a runnable Python script (see
-[docs/getting-started/solidworks-as-code.md](docs/getting-started/solidworks-as-code.md)).
-
-| Variable | Default | Meaning |
-| --- | --- | --- |
-| `SOLIDWORKS_MCP_SOC_LOGGING_ENABLED` | `false` | Turn logging on. |
-| `SOLIDWORKS_MCP_SOC_SESSION_ID` | *(generated)* | Session name to log under. If unset while logging is on, a `soc-YYYYMMDD-HHMMSS` id is generated at startup. |
-| `SOLIDWORKS_MCP_SOC_DB_PATH` | `.solidworks_mcp/agent_memory.sqlite3` | Override the database file. |
-
-```powershell
-$env:SOLIDWORKS_MCP_SOC_LOGGING_ENABLED = "true"
-$env:SOLIDWORKS_MCP_SOC_SESSION_ID = "my-bracket"
-.\.venv\Scripts\python.exe -m solidworks_mcp.server
-# ...work in your MCP client...
-.\.venv\Scripts\python.exe -m solidworks_mcp.agents.soc_exporter my-bracket my_bracket.py
-```
-
-Effective only with the circuit-breaker adapter wrapper (the default for real
-SolidWorks); the mock adapter does not log.
-
-### API docs index auto-refresh — **on by default**
-
-The granular API-lookup tools (`lookup_api_interface`, `lookup_api_method`,
-`find_related_api_members`) and `search_solidworks_api_help` read a JSON index
-built by `discover_solidworks_docs`. When that index is older than the
-threshold it is rebuilt automatically on the next lookup.
-
-| Variable | Default | Meaning |
-| --- | --- | --- |
-| `SOLIDWORKS_MCP_DOCS_INDEX_AUTO_REFRESH` | `true` | Rebuild a stale index automatically. No-op without SolidWorks + win32com; a failed rebuild keeps serving the existing index. |
-| `SOLIDWORKS_MCP_DOCS_INDEX_MAX_AGE_DAYS` | `21` | Age after which the index counts as stale. |
-
-## Common Windows Fixes
-
-If `python` is not found:
-
-```powershell
-python --version
-```
-
-If this opens Microsoft Store or fails, reinstall Python from python.org and enable PATH.
-
-If startup fails with `ModuleNotFoundError: solidworks_mcp`:
-
-```powershell
-.\.venv\Scripts\python.exe -m pip install -e .
-```
-
-If startup fails with `ModuleNotFoundError: fastmcp`:
-
-```powershell
-.\.venv\Scripts\python.exe -m pip install -e .
-```
-
-## Docs
-
-- Main docs site: <https://andrewbartels1.github.io/SolidworksMCP-python/>
-- Home/overview: [docs/index.md](docs/index.md)
-
-Key docs sections:
-
-- Getting Started: [docs/getting-started](docs/getting-started)
-- MCP Server Guide: [docs/user-guide](docs/user-guide)
-- Tool Catalog: [docs/user-guide/tool-catalog](docs/user-guide/tool-catalog)
-- Agents and Skills: [docs/agents](docs/agents)
-- Planning/Roadmap: [docs/planning](docs/planning)
-
-Direct links:
-
-- [Installation](docs/getting-started/installation.md)
-- [Quick Start](docs/getting-started/quickstart.md)
-- [Tutorial: U-Joint Assembly Build](docs/getting-started/tutorials/u-joint-assembly-build.md)
-- [Tutorial Tracks](docs/getting-started/tutorial-tracks.md)
-- [VS Code MCP Setup](docs/getting-started/vscode-mcp-setup.md)
-- [Architecture](docs/user-guide/architecture.md)
-- [Agents and Prompt Testing](docs/agents/agents-and-testing.md)
-- [PydanticAI and Schemas](docs/agents/pydantic-ai-and-schemas.md)
-
-## License
-
-MIT License. See [LICENSE](LICENSE).
+- [上游文档站](https://andrewbartels1.github.io/SolidworksMCP-python/) · [本仓库上游英文说明](README.en.md) · [上游西班牙文说明](README.es-ES.md)
+- [工具目录](docs/user-guide/tool-catalog) · [架构](docs/user-guide/architecture.md) · [Agent 与提示词测试](docs/agents/agents-and-testing.md)
+- MIT License，见 [LICENSE](LICENSE)。
