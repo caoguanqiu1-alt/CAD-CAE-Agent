@@ -1,4 +1,4 @@
-# SolidWorks CAE Agent — SW2020 MCP extension
+# CAD-CAE — SolidWorks 建模与仿真 Agent
 
 本项目在 [andrewbartels1/SolidworksMCP-python](https://github.com/andrewbartels1/SolidworksMCP-python)
 的 MIT 开源基础上增加了实际运行于 **SOLIDWORKS 2020 SP5** 的建模与静力分析工作流。
@@ -11,7 +11,7 @@
 
 ![真实 SOLIDWORKS 合位移结果](docs/cae/assets/pin-guided-ures.png)
 
-> 这是一套有边界的 CAE Agent 原型。位移收敛不代表峰值应力或接触压力收敛；示例载荷和外部导向约束不能替代真实设备工况。SOLIDWORKS、Simulation 及其 Interop DLL 需自行合法安装，不随仓库分发。
+> 这是一套有边界的 CAD-CAE Agent 原型，覆盖建模与仿真。位移收敛不代表峰值应力或接触压力收敛；示例载荷和外部导向约束不能替代真实设备工况。SOLIDWORKS、Simulation 及其 Interop DLL 需自行合法安装，不随仓库分发。
 
 ## Upstream project documentation
 
