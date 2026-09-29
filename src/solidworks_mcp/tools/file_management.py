@@ -1812,5 +1812,5 @@ async def register_file_management_tools(
             logger.error(f"Error in save_body_as_part tool: {e}")
             return {"status": "error", "message": f"Unexpected error: {str(e)}"}
 
-    tool_count = 18  # Total number of registered tools in this module
+    tool_count = 19  # Total number of registered tools in this module
     return tool_count

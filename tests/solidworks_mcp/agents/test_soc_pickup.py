@@ -351,7 +351,7 @@ async def test_pickup_changes_appends_to_script_file(tmp_db, tmp_path):
         adapter, "sess-append", output_path=script_path, db_path=tmp_db
     )
 
-    content = script_path.read_text()
+    content = script_path.read_text(encoding="utf-8")
     assert "add_fillet" in content
 
 

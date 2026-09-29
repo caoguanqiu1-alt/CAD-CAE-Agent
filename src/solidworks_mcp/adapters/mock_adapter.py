@@ -1086,6 +1086,20 @@ class MockSolidWorksAdapter(SolidWorksAdapter):
             execution_time=0.02,
         )
 
+    async def rebuild_model(self) -> AdapterResult[None]:
+        """Simulate rebuilding the active model without changing its geometry."""
+        if not self._current_model:
+            return AdapterResult(
+                status=AdapterResultStatus.ERROR,
+                error="No active model",
+            )
+        await asyncio.sleep(self._delays["model_operation"])
+        self._operation_count += 1
+        return AdapterResult(
+            status=AdapterResultStatus.SUCCESS,
+            execution_time=self._delays["model_operation"],
+        )
+
     async def add_line(
         self, x1: float, y1: float, x2: float, y2: float
     ) -> AdapterResult[str]:

@@ -255,7 +255,7 @@ class AdapterFactory:
         return {
             "solidworks_path": config.solidworks_path,
             # Preserve the launcher's --year hint through the adapter boundary.
-            "solidworks_year": config.solidworks_year,
+            "solidworks_year": getattr(config, "solidworks_year", None),
             "enable_windows_validation": config.enable_windows_validation,
             "debug": config.debug,
             "timeout": 30,  # Default timeout in seconds

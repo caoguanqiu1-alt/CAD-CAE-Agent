@@ -11,10 +11,10 @@
 | 9 月 7 日，ChatGPT「查找SW建模Skills」「Codex控制SW方法」 | 比较 Computer Use、Skill、COM 和 MCP，形成“AI 客户端 → MCP → COM API → SOLIDWORKS”的设想。 | 方法讨论，不能当作建模实测。 |
 | 9 月 8 日起，Codex「构建 SolidWorks COM 连通性测试」（任务 ID `01a07f6d-d874-7d80-b89c-f0940ee61384`） | 编译并运行直接 C# COM 程序；生成 `Sketch1 → Boss-Extrude1`，100 × 60 × 10 mm，单实体、8 顶点、60,000 mm³；`SaveAs` 无错误和警告。 | 实测。最初日志名为 `connectivity-success.log`，零件名为 `test.SLDPRT`，原文件保存在本机，不随公开仓库分发。 |
 | 9 月 8–9 日，同一任务 | 安装上游 Python MCP，加入 SW2020 稳定入口和延迟 COM 连接；一次验收列出 137 个工具，工具发现未启动 SOLIDWORKS，真实 `sw2020_preflight` 连接到 2020。 | MCP 初始化与真实连接均实测；137 是当时的快照数，不代表每个工具都经过建模验收。 |
-| 9 月 9 日，SW2020 兼容性集成 | 补齐 2020 类型库探测、指定年份连接、重建与几何回读；经原生 MCP 工具创建和复核同规格零件。 | 实测与代码说明见 [SW2020 兼容性记录](../SW2020_COMPAT.md)。该阶段 133 个工具是另一代码快照，不应误读成能力退化或全面覆盖率。 |
+| 9 月 9 日，SW2020 兼容性集成 | 补齐 2020 类型库探测、指定年份连接、重建与几何回读；经原生 MCP 工具创建和复核同规格零件。 | 实测与代码说明见 [SW2020 兼容性记录](https://github.com/caoguanqiu1-alt/CAD-CAE-Agent/blob/main/SW2020_COMPAT.md)。该阶段 133 个工具是另一代码快照，不应误读成能力退化或全面覆盖率。 |
 | 9 月 14 日起，Codex「SW CODEX」（任务 ID `01a09eaf-f5ec-7683-aec8-7ce834d3e8cf`） | 将 API 用于更复杂的图纸参考重建：保存过皮带轮参考模型，但特征树与目标图不一致，8° 内侧斜壁未建立；另有草图与零件操作记录。 | 真实建模与局限同时存在；不是“任意图纸都能完整自动还原”的证明。 |
 | 9 月 28 日，Codex「整理 SolidWorks API 最小工作流」（任务 ID `01a0e5eb-8e82-7741-a179-21478d773034`） | 区分直接 COM、宏、脚本桥与 MCP；从早期日志复原最小执行步骤。 | 资料复核，没有在该任务里重新运行最初的零件。 |
-| 9 月 28–29 日，Codex「添加 Simulation 静力分析支持」及本仓库 | 加入有边界的建模计划、Simulation 工具、求解和后处理。新 MCP 连接发现 149 个工具，其中 8 个仿真工具；静力算例真实求解并重开回读。 | 当前仓库的 [中文说明](../README_CAE.md)、[计划接口](../SIMULATION_PHASE3.md)与[验证记录](cae/verification.md)支持这些结论。149 同样是注册数，不是逐工具实测数。 |
+| 9 月 28–29 日，Codex「添加 Simulation 静力分析支持」及本仓库 | 加入有边界的建模计划、Simulation 工具、求解和后处理。新 MCP 连接发现 149 个工具，其中 8 个仿真工具；静力算例真实求解并重开回读。 | 当前仓库的 [中文说明](https://github.com/caoguanqiu1-alt/CAD-CAE-Agent/blob/main/README_CAE.md)、[计划接口](https://github.com/caoguanqiu1-alt/CAD-CAE-Agent/blob/main/SIMULATION_PHASE3.md)与[验证记录](cae/verification.md)支持这些结论。149 同样是注册数，不是逐工具实测数。 |
 
 ## 和最开始相比，具体改变了什么
 

@@ -156,16 +156,19 @@ def test_build_adapter_config_values() -> None:
     factory = AdapterFactory()
     cfg = _base_config(
         solidworks_path="C:/SW/SLDWORKS.exe",
+        solidworks_year=2020,
         enable_windows_validation=True,
         debug=True,
     )
 
     adapter_cfg = factory._build_adapter_config(cfg)
     assert adapter_cfg["solidworks_path"] == "C:/SW/SLDWORKS.exe"
+    assert adapter_cfg["solidworks_year"] == 2020
     assert adapter_cfg["enable_windows_validation"] is True
     assert adapter_cfg["debug"] is True
     assert adapter_cfg["timeout"] == 30
     assert adapter_cfg["retry_attempts"] == 3
+    assert factory._build_adapter_config(_base_config())["solidworks_year"] is None
 
 
 def test_register_default_adapters_handles_pywin32_importerror(monkeypatch) -> None:
