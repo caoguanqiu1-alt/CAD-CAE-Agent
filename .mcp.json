@@ -4,13 +4,8 @@
       "command": "powershell",
       "args": [
         "-NoProfile",
-        "-ExecutionPolicy",
-        "Bypass",
         "-File",
-        ".\\deployment\\run-mcp-claude.ps1",
-        "--real",
-        "--year",
-        "2026"
+        ".\\deployment\\run-sw2020-mcp.ps1"
       ]
     }
   }

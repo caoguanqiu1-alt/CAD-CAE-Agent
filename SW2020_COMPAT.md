@@ -7,8 +7,8 @@ Base: `00cf8174ae67aa4b5837749c94125255a44c85f2` (2026-09-06). The original `mai
 ## Runtime and launch
 
 - Dedicated CPython 3.13.15 x64 from python.org. The installer SHA-256 was `edec09c4853aeae9ac36efb8c9f95b6b8e2fee65eee56d9767a8b7c69c574403`; Windows Authenticode reported a valid Python Software Foundation signature.
-- Interpreter installation: `C:\Users\28699\Documents\Codex\SolidWorksMCP\Python313`.
-- Repository: `C:\Users\28699\Documents\Codex\SolidWorksMCP\SolidworksMCP-python`.
+- Interpreter installation: local Python 3.13 x64 (machine-specific path omitted).
+- Repository: this checkout (machine-specific path omitted).
 - Independent `.venv`, installed using `python -m venv .venv`, followed by `.venv\Scripts\python.exe -m pip install -e .`.
 - Existing Python 3.12 and PATH were retained.
 - Host command: `.venv\Scripts\python.exe` with absolute path to `src\utils\start_local_server_claude.py --real --year 2020`.

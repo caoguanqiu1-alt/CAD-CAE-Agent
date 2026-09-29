@@ -1,4 +1,19 @@
-# SolidWorks CAD Assistant & MCP Server
+# SolidWorks CAE Agent — SW2020 MCP extension
+
+本项目在 [andrewbartels1/SolidworksMCP-python](https://github.com/andrewbartels1/SolidworksMCP-python)
+的 MIT 开源基础上增加了实际运行于 **SOLIDWORKS 2020 SP5** 的建模与静力分析工作流。
+保留上游版权及历史；本分支新增能力、验证范围和限制见下方入口。
+
+- **[中文安装与演示说明](README_CAE.md)**：真实 COM/MCP 调用、149 个注册工具（其中 8 个仿真工具）。
+- **[仿真计划接口](SIMULATION_PHASE3.md)**：多向多载荷、销轴接触、网格检查、URES 云图及原生结果归档。
+- **[本机验证记录](docs/cae/verification.md)**：真实求解数值、重新连接回读、测试范围与未收敛项。
+- **[第三届 DGX Spark 黑客松适配评估](docs/cae/hackathon-readiness.md)**：方向匹配，DGX 本地推理和跨机执行尚未验证。
+
+![真实 SOLIDWORKS 合位移结果](docs/cae/assets/pin-guided-ures.png)
+
+> 这是一套有边界的 CAE Agent 原型。位移收敛不代表峰值应力或接触压力收敛；示例载荷和外部导向约束不能替代真实设备工况。SOLIDWORKS、Simulation 及其 Interop DLL 需自行合法安装，不随仓库分发。
+
+## Upstream project documentation
 
 **Languages:** [English](README.md) | [Español](README.es-ES.md)
 
@@ -8,7 +23,7 @@
 [![SolidWorks](https://img.shields.io/badge/SolidWorks-2019--2026-red)](https://www.solidworks.com/)
 [![Coverage](https://codecov.io/gh/andrewbartels1/SolidworksMCP-python/branch/main/graph/badge.svg)](https://codecov.io/gh/andrewbartels1/SolidworksMCP-python)
 
-Python MCP server for SolidWorks automation with 132 tools, plus an optional agent/prompt-testing layer for AI-assisted workflows.
+The upstream Python MCP server provides the CAD runtime and optional agent/prompt-testing layer. The SW2020 stable entrypoint in this repository additionally registers the modeling and Simulation extensions described above.
 
 ## Overview
 
@@ -39,7 +54,7 @@ It includes:
 - Mock adapter output is simulated and should not be treated as engineering truth.
 - Live 3D viewport streaming in a UI.
 - Checkpoint-level interference validation.
-- Simple simulation and fluid workflows
+- Fluid workflows and simulation types outside the bounded SW2020 static extension
 - Simple Topology Optimization via SimulationXpress etc.
 
 ## What Works (Verified Windows Setup)

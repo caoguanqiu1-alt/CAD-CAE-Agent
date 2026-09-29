@@ -1,0 +1,690 @@
+{
+  "checked_on": "2026-09-29",
+  "source": "Real SOLIDWORKS 2020 SP5 Simulation; local paths redacted",
+  "two_load_plan": {
+    "status": "success",
+    "study": "AgentPlan_2load",
+    "document": "<local>/CAE_Agent_Planned.SLDPRT",
+    "created_study": true,
+    "solid_body_count": 1,
+    "mesh_runs": [
+      {
+        "element_size_mm": 5.0,
+        "node_count": 8815,
+        "element_count": 5057,
+        "max_displacement_mm": 0.13855448365211487,
+        "max_von_mises_MPa": 13.434653282165527,
+        "reaction_fx_N": -999.9490356445312,
+        "solver_error_code": 0,
+        "cwr_snapshot": "<local>/CAE_Agent_Planned-AgentPlan_2load.CWR"
+      },
+      {
+        "element_size_mm": 4.0,
+        "node_count": 16716,
+        "element_count": 10132,
+        "max_displacement_mm": 0.1389392763376236,
+        "max_von_mises_MPa": 13.418334007263184,
+        "reaction_fx_N": -1000.000244140625,
+        "solver_error_code": 0,
+        "cwr_snapshot": "<local>/CAE_Agent_Planned-AgentPlan_2load.CWR"
+      },
+      {
+        "element_size_mm": 3.0,
+        "node_count": 34596,
+        "element_count": 21908,
+        "max_displacement_mm": 0.13922247290611267,
+        "max_von_mises_MPa": 13.977516174316406,
+        "reaction_fx_N": -1000.0233154296875,
+        "solver_error_code": 0,
+        "cwr_snapshot": "<local>/CAE_Agent_Planned-AgentPlan_2load.CWR"
+      }
+    ],
+    "displacement_change_percent": [
+      0.27695025888408875,
+      0.20341297103669012
+    ],
+    "displacement_tolerance_percent": 1.0,
+    "displacement_converged": true,
+    "peak_stress_change_percent": [
+      0.12161923300992748,
+      4.000583222938538
+    ],
+    "peak_stress_converged_at_same_tolerance": false,
+    "plot_bmp": "<local>/Planned_Ures.bmp",
+    "steps": [
+      {
+        "step": "preflight",
+        "status": "success",
+        "error_code": null
+      },
+      {
+        "step": "geometry",
+        "status": "success",
+        "error_code": null
+      },
+      {
+        "step": "resolve_faces",
+        "status": "success",
+        "error_code": null
+      },
+      {
+        "step": "study",
+        "status": "success",
+        "error_code": null
+      },
+      {
+        "step": "initial_state",
+        "status": "success",
+        "error_code": null
+      },
+      {
+        "step": "material",
+        "status": "success",
+        "error_code": null
+      },
+      {
+        "step": "fixture",
+        "status": "success",
+        "error_code": null
+      },
+      {
+        "step": "loads",
+        "status": "success",
+        "error_code": null
+      },
+      {
+        "step": "configured_state",
+        "status": "success",
+        "error_code": null
+      },
+      {
+        "step": "mesh_5mm",
+        "status": "success",
+        "error_code": null
+      },
+      {
+        "step": "run_5mm",
+        "status": "success",
+        "error_code": null
+      },
+      {
+        "step": "results_5mm",
+        "status": "success",
+        "error_code": null
+      },
+      {
+        "step": "mesh_4mm",
+        "status": "success",
+        "error_code": null
+      },
+      {
+        "step": "run_4mm",
+        "status": "success",
+        "error_code": null
+      },
+      {
+        "step": "results_4mm",
+        "status": "success",
+        "error_code": null
+      },
+      {
+        "step": "mesh_3mm",
+        "status": "success",
+        "error_code": null
+      },
+      {
+        "step": "run_3mm",
+        "status": "success",
+        "error_code": null
+      },
+      {
+        "step": "results_3mm",
+        "status": "success",
+        "error_code": null
+      },
+      {
+        "step": "plot",
+        "status": "success",
+        "error_code": null
+      },
+      {
+        "step": "save",
+        "status": "success",
+        "error_code": null
+      }
+    ]
+  },
+  "pin_contact_plan": {
+    "status": "success",
+    "study": "AgentPin_Guided",
+    "document": "<local>/CAE_Agent_PinPlan.SLDPRT",
+    "created_study": true,
+    "solid_body_count": 3,
+    "mesh_runs": [
+      {
+        "element_size_mm": 5.0,
+        "node_count": 13561,
+        "element_count": 8003,
+        "max_displacement_mm": 0.011157815344631672,
+        "max_von_mises_MPa": 10.478336334228516,
+        "reaction_fx_N": -1000.0078125,
+        "solver_error_code": 0,
+        "cwr_snapshot": "<local>/CAE_Agent_PinPlan-AgentPin_Guided.CWR"
+      },
+      {
+        "element_size_mm": 4.0,
+        "node_count": 24516,
+        "element_count": 15115,
+        "max_displacement_mm": 0.011187857016921043,
+        "max_von_mises_MPa": 10.918749809265137,
+        "reaction_fx_N": -999.9981689453125,
+        "solver_error_code": 0,
+        "cwr_snapshot": "<local>/CAE_Agent_PinPlan-AgentPin_Guided.CWR"
+      },
+      {
+        "element_size_mm": 3.0,
+        "node_count": 51985,
+        "element_count": 33407,
+        "max_displacement_mm": 0.01121470332145691,
+        "max_von_mises_MPa": 11.492753028869629,
+        "reaction_fx_N": -999.9996948242188,
+        "solver_error_code": 0,
+        "cwr_snapshot": "<local>/CAE_Agent_PinPlan-AgentPin_Guided.CWR"
+      }
+    ],
+    "displacement_change_percent": [
+      0.26852034526303875,
+      0.2393848839897636
+    ],
+    "displacement_tolerance_percent": 1.0,
+    "displacement_converged": true,
+    "peak_stress_change_percent": [
+      4.033552217332675,
+      4.994479722679191
+    ],
+    "peak_stress_converged_at_same_tolerance": false,
+    "plot_bmp": "<local>/PinPlan_Ures.bmp",
+    "steps": [
+      {
+        "step": "preflight",
+        "status": "success",
+        "error_code": null
+      },
+      {
+        "step": "geometry",
+        "status": "success",
+        "error_code": null
+      },
+      {
+        "step": "resolve_faces",
+        "status": "success",
+        "error_code": null
+      },
+      {
+        "step": "study",
+        "status": "success",
+        "error_code": null
+      },
+      {
+        "step": "initial_state",
+        "status": "success",
+        "error_code": null
+      },
+      {
+        "step": "materials",
+        "status": "success",
+        "error_code": null
+      },
+      {
+        "step": "fixture",
+        "status": "success",
+        "error_code": null
+      },
+      {
+        "step": "loads",
+        "status": "success",
+        "error_code": null
+      },
+      {
+        "step": "axial_rollers",
+        "status": "success",
+        "error_code": null
+      },
+      {
+        "step": "lateral_guide",
+        "status": "success",
+        "error_code": null
+      },
+      {
+        "step": "contacts",
+        "status": "success",
+        "error_code": null
+      },
+      {
+        "step": "configured_state",
+        "status": "success",
+        "error_code": null
+      },
+      {
+        "step": "mesh_5mm",
+        "status": "success",
+        "error_code": null
+      },
+      {
+        "step": "run_5mm",
+        "status": "success",
+        "error_code": null
+      },
+      {
+        "step": "results_5mm",
+        "status": "success",
+        "error_code": null
+      },
+      {
+        "step": "mesh_4mm",
+        "status": "success",
+        "error_code": null
+      },
+      {
+        "step": "run_4mm",
+        "status": "success",
+        "error_code": null
+      },
+      {
+        "step": "results_4mm",
+        "status": "success",
+        "error_code": null
+      },
+      {
+        "step": "mesh_3mm",
+        "status": "success",
+        "error_code": null
+      },
+      {
+        "step": "run_3mm",
+        "status": "success",
+        "error_code": null
+      },
+      {
+        "step": "results_3mm",
+        "status": "success",
+        "error_code": null
+      },
+      {
+        "step": "plot",
+        "status": "success",
+        "error_code": null
+      },
+      {
+        "step": "save",
+        "status": "success",
+        "error_code": null
+      }
+    ]
+  },
+  "new_mcp_connections": {
+    "scope": "two new stdio MCP connections; not desktop tool-cache reload",
+    "sessions": [
+      {
+        "tool_count": 149,
+        "simulation_tools": [
+          "sw_simulation_check",
+          "sw_simulation_create_static_study",
+          "sw_simulation_general_step",
+          "sw_simulation_inspect_geometry",
+          "sw_simulation_make_pin",
+          "sw_simulation_resolve_geometry",
+          "sw_simulation_run_plan",
+          "sw_simulation_static_step"
+        ],
+        "discovery_preserved_processes": true,
+        "check": {
+          "solidworks_connected": true,
+          "solidworks_version": "2020",
+          "revision": "28.5.0",
+          "document_open": true,
+          "document_type": "part",
+          "document_path": "<local>/CAE_Agent_PinPlan.SLDPRT",
+          "document_dirty": false,
+          "simulation_installed": true,
+          "simulation_loaded": true,
+          "simulation_api_available": true,
+          "simulation_license_status": "not_independently_verified",
+          "addin_progid": "SldWorks.Simulation",
+          "simulation_version": "890518",
+          "status": "success"
+        },
+        "state": {
+          "status": "success",
+          "study": "AgentPin_Guided",
+          "boundaries": [
+            {
+              "name": "固定-1",
+              "type": 2,
+              "state": 0,
+              "entity_count": 1
+            },
+            {
+              "name": "力-1",
+              "type": 3,
+              "state": 0,
+              "entity_count": 2
+            },
+            {
+              "name": "滚柱/滑杆-1",
+              "type": 2,
+              "state": 0,
+              "entity_count": 1
+            },
+            {
+              "name": "滚柱/滑杆-2",
+              "type": 2,
+              "state": 0,
+              "entity_count": 1
+            },
+            {
+              "name": "参考几何-1",
+              "type": 2,
+              "state": 0,
+              "entity_count": 2
+            }
+          ],
+          "node_count": 51985,
+          "element_count": 33407,
+          "contact_count": 2,
+          "global_contact_type": 1,
+          "global_contact_option": 0,
+          "contacts": [
+            {
+              "name": "相触面组-1",
+              "type": 0,
+              "source_count": 1,
+              "target_count": 1
+            },
+            {
+              "name": "相触面组-2",
+              "type": 0,
+              "source_count": 1,
+              "target_count": 1
+            }
+          ],
+          "result_folder": "<local>/outputs",
+          "dirty": false
+        },
+        "results": {
+          "status": "success",
+          "study": "AgentPin_Guided",
+          "min_displacement_mm": 1.0000000031710769e-30,
+          "max_displacement_mm": 0.01121470332145691,
+          "max_node": 51854,
+          "max_location_mm": [
+            107.50000178813934,
+            -9.999999776482582,
+            -1.0927847515773692e-06
+          ],
+          "max_location_error": 0,
+          "component_extrema": [
+            {
+              "component": 0,
+              "min_mm": 0,
+              "max_mm": 0.01113713439553976
+            },
+            {
+              "component": 1,
+              "min_mm": -0.0013167415745556355,
+              "max_mm": 0.003263366874307394
+            },
+            {
+              "component": 2,
+              "min_mm": -0.0007752821547910571,
+              "max_mm": 0.0007753052050247788
+            }
+          ],
+          "max_von_mises_MPa": 11.492753028869629,
+          "node_count": 51985,
+          "element_count": 33407
+        },
+        "invalid_plan": {
+          "status": "error",
+          "error_code": "SAVED_PART_COPY_REQUIRED",
+          "message": ""
+        },
+        "saved_document_preserved": true
+      },
+      {
+        "tool_count": 149,
+        "simulation_tools": [
+          "sw_simulation_check",
+          "sw_simulation_create_static_study",
+          "sw_simulation_general_step",
+          "sw_simulation_inspect_geometry",
+          "sw_simulation_make_pin",
+          "sw_simulation_resolve_geometry",
+          "sw_simulation_run_plan",
+          "sw_simulation_static_step"
+        ],
+        "discovery_preserved_processes": true,
+        "check": {
+          "solidworks_connected": true,
+          "solidworks_version": "2020",
+          "revision": "28.5.0",
+          "document_open": true,
+          "document_type": "part",
+          "document_path": "<local>/CAE_Agent_PinPlan.SLDPRT",
+          "document_dirty": false,
+          "simulation_installed": true,
+          "simulation_loaded": true,
+          "simulation_api_available": true,
+          "simulation_license_status": "not_independently_verified",
+          "addin_progid": "SldWorks.Simulation",
+          "simulation_version": "890518",
+          "status": "success"
+        },
+        "state": {
+          "status": "success",
+          "study": "AgentPin_Guided",
+          "boundaries": [
+            {
+              "name": "固定-1",
+              "type": 2,
+              "state": 0,
+              "entity_count": 1
+            },
+            {
+              "name": "力-1",
+              "type": 3,
+              "state": 0,
+              "entity_count": 2
+            },
+            {
+              "name": "滚柱/滑杆-1",
+              "type": 2,
+              "state": 0,
+              "entity_count": 1
+            },
+            {
+              "name": "滚柱/滑杆-2",
+              "type": 2,
+              "state": 0,
+              "entity_count": 1
+            },
+            {
+              "name": "参考几何-1",
+              "type": 2,
+              "state": 0,
+              "entity_count": 2
+            }
+          ],
+          "node_count": 51985,
+          "element_count": 33407,
+          "contact_count": 2,
+          "global_contact_type": 1,
+          "global_contact_option": 0,
+          "contacts": [
+            {
+              "name": "相触面组-1",
+              "type": 0,
+              "source_count": 1,
+              "target_count": 1
+            },
+            {
+              "name": "相触面组-2",
+              "type": 0,
+              "source_count": 1,
+              "target_count": 1
+            }
+          ],
+          "result_folder": "<local>/outputs",
+          "dirty": false
+        },
+        "results": {
+          "status": "success",
+          "study": "AgentPin_Guided",
+          "min_displacement_mm": 1.0000000031710769e-30,
+          "max_displacement_mm": 0.01121470332145691,
+          "max_node": 51854,
+          "max_location_mm": [
+            107.50000178813934,
+            -9.999999776482582,
+            -1.0927847515773692e-06
+          ],
+          "max_location_error": 0,
+          "component_extrema": [
+            {
+              "component": 0,
+              "min_mm": 0,
+              "max_mm": 0.01113713439553976
+            },
+            {
+              "component": 1,
+              "min_mm": -0.0013167415745556355,
+              "max_mm": 0.003263366874307394
+            },
+            {
+              "component": 2,
+              "min_mm": -0.0007752821547910571,
+              "max_mm": 0.0007753052050247788
+            }
+          ],
+          "max_von_mises_MPa": 11.492753028869629,
+          "node_count": 51985,
+          "element_count": 33407
+        },
+        "invalid_plan": {
+          "status": "error",
+          "error_code": "SAVED_PART_COPY_REQUIRED",
+          "message": ""
+        },
+        "saved_document_preserved": true
+      }
+    ]
+  },
+  "current_chat_refreshed": {
+    "checked_on": "2026-09-29",
+    "scope": "Current Codex chat exposed and directly called the new Simulation MCP tools",
+    "tools": [
+      "mcp__solidworks__sw_simulation_check",
+      "mcp__solidworks__sw_simulation_create_static_study",
+      "mcp__solidworks__sw_simulation_general_step",
+      "mcp__solidworks__sw_simulation_inspect_geometry",
+      "mcp__solidworks__sw_simulation_make_pin",
+      "mcp__solidworks__sw_simulation_resolve_geometry",
+      "mcp__solidworks__sw_simulation_run_plan",
+      "mcp__solidworks__sw_simulation_static_step"
+    ],
+    "state": {
+      "status": "success",
+      "study": "AgentPin_Guided",
+      "boundaries": [
+        {
+          "name": "固定-1",
+          "type": 2,
+          "state": 0,
+          "entity_count": 1
+        },
+        {
+          "name": "力-1",
+          "type": 3,
+          "state": 0,
+          "entity_count": 2
+        },
+        {
+          "name": "滚柱/滑杆-1",
+          "type": 2,
+          "state": 0,
+          "entity_count": 1
+        },
+        {
+          "name": "滚柱/滑杆-2",
+          "type": 2,
+          "state": 0,
+          "entity_count": 1
+        },
+        {
+          "name": "参考几何-1",
+          "type": 2,
+          "state": 0,
+          "entity_count": 2
+        }
+      ],
+      "node_count": 51985,
+      "element_count": 33407,
+      "contact_count": 2,
+      "global_contact_type": 1,
+      "global_contact_option": 0,
+      "contacts": [
+        {
+          "name": "相触面组-1",
+          "type": 0,
+          "source_count": 1,
+          "target_count": 1
+        },
+        {
+          "name": "相触面组-2",
+          "type": 0,
+          "source_count": 1,
+          "target_count": 1
+        }
+      ],
+      "dirty": false
+    },
+    "results": {
+      "status": "success",
+      "study": "AgentPin_Guided",
+      "min_displacement_mm": 1.0000000031710769e-30,
+      "max_displacement_mm": 0.01121470332145691,
+      "max_node": 51854,
+      "max_location_mm": [
+        107.50000178813934,
+        -9.999999776482582,
+        -1.0927847515773692e-06
+      ],
+      "max_location_error": 0,
+      "component_extrema": [
+        {
+          "component": 0,
+          "min_mm": 0,
+          "max_mm": 0.01113713439553976
+        },
+        {
+          "component": 1,
+          "min_mm": -0.0013167415745556355,
+          "max_mm": 0.003263366874307394
+        },
+        {
+          "component": 2,
+          "min_mm": -0.0007752821547910571,
+          "max_mm": 0.0007753052050247788
+        }
+      ],
+      "max_von_mises_MPa": 11.492753028869629,
+      "node_count": 51985,
+      "element_count": 33407
+    },
+    "invalid_plan": {
+      "status": "error",
+      "error_code": "SAVED_PART_COPY_REQUIRED",
+      "message": ""
+    }
+  }
+}
