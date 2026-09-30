@@ -1,0 +1,440 @@
+{
+  "checked_date": "2026-09-30",
+  "solidworks_revision": "28.5.0",
+  "displayed_image_count": 6,
+  "archived_image_count": 8,
+  "mismatch_count": 0,
+  "scope": "study, loading locations and force directions, material properties, nominal mesh size, URES and displayed mesh edges",
+  "images": [
+    {
+      "image": "assets/single-load-1000n-solidworks.png",
+      "image_sha256": "72e834538cf2a6f899286021ce0d525fad33f0b7a213deed05471b1a6398a632",
+      "evidence": "live native result readback",
+      "study": "Tension_1000N",
+      "nominal_element_size_mm": 3,
+      "node_count": 34596,
+      "element_count": 21908,
+      "max_URES_mm": 0.007041338365525007,
+      "global_forces_N": [
+        [
+          1000,
+          0,
+          0
+        ]
+      ],
+      "contact_set_count": 0,
+      "linear_elastic_isotropic": true,
+      "elastic_modulus_Pa": 69000000666.13725,
+      "poisson_ratio": 0.33,
+      "plot": {
+        "name": "位移2",
+        "type": 1,
+        "component": "URES: 合位移",
+        "deformed": true,
+        "scale": 1,
+        "error": 0,
+        "settings": [
+          3,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          178,
+          178,
+          178,
+          0.8999999761581421
+        ]
+      },
+      "fixed_boundary": {
+        "name": "固定-1",
+        "type": 2,
+        "state": 0,
+        "entities": [
+          {
+            "kind": "face",
+            "box_m": [
+              -0.02000000000000001,
+              -0.015,
+              -0.02000000000000001,
+              0.02000000000000001,
+              0.015,
+              0.02000000000000001
+            ],
+            "cylindrical": true,
+            "cylinder_params": [
+              0,
+              0.047010143074523766,
+              0,
+              0,
+              1,
+              0,
+              0.02000000000000001
+            ],
+            "normal": [
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "reference": {
+          "kind": "null"
+        },
+        "reference_error": 0,
+        "direction": [
+          0,
+          0,
+          1
+        ],
+        "restraint_type": 0,
+        "translation_flags": [
+          0,
+          0,
+          0
+        ],
+        "translation_values": [
+          0,
+          0,
+          0
+        ]
+      },
+      "text_image_match": true,
+      "solver_run": false
+    },
+    {
+      "image": "assets/multiload-plan-solidworks.png",
+      "image_sha256": "444dc83846bc6defaf8c429291337a61d0faf9eb8f2b20a1dc3aaacf006a3e2e",
+      "evidence": "live native result readback",
+      "study": "AgentPlan_2load",
+      "nominal_element_size_mm": 3,
+      "node_count": 34596,
+      "element_count": 21908,
+      "max_URES_mm": 0.13922247290611267,
+      "global_forces_N": [
+        [
+          600,
+          50,
+          25
+        ],
+        [
+          400,
+          -50,
+          -25
+        ]
+      ],
+      "contact_set_count": 0,
+      "linear_elastic_isotropic": true,
+      "elastic_modulus_Pa": 69000000666.13725,
+      "poisson_ratio": 0.33,
+      "plot": {
+        "name": "位移2",
+        "type": 1,
+        "component": "URES: 合位移",
+        "deformed": true,
+        "scale": 1,
+        "error": 0,
+        "settings": [
+          3,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          178,
+          178,
+          178,
+          0.8999999761581421
+        ]
+      },
+      "fixed_boundary": {
+        "name": "固定-1",
+        "type": 2,
+        "state": 0,
+        "entities": [
+          {
+            "kind": "face",
+            "box_m": [
+              -0.02000000000000001,
+              -0.015,
+              -0.02000000000000001,
+              0.02000000000000001,
+              0.015,
+              0.02000000000000001
+            ],
+            "cylindrical": true,
+            "cylinder_params": [
+              0,
+              0.047010143074523766,
+              0,
+              0,
+              1,
+              0,
+              0.02000000000000001
+            ],
+            "normal": [
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "reference": {
+          "kind": "null"
+        },
+        "reference_error": 0,
+        "direction": [
+          0,
+          0,
+          1
+        ],
+        "restraint_type": 0,
+        "translation_flags": [
+          0,
+          0,
+          0
+        ],
+        "translation_values": [
+          0,
+          0,
+          0
+        ]
+      },
+      "text_image_match": true,
+      "solver_run": false
+    },
+    {
+      "image": "assets/pin-guided-ures.png",
+      "image_sha256": "bb72f7c0a759cbe29717b7e38d0908be0a2bba0cfedfb35abc9a22c9e6440367",
+      "evidence": "live native result readback",
+      "study": "Pin_Guided_1000N",
+      "nominal_element_size_mm": 2,
+      "node_count": 163548,
+      "element_count": 110229,
+      "max_URES_mm": 0.011234013363718987,
+      "global_forces_N": [
+        [
+          1000,
+          0,
+          0
+        ]
+      ],
+      "contact_set_count": 2,
+      "linear_elastic_isotropic": true,
+      "elastic_modulus_Pa": 69000000666.13725,
+      "poisson_ratio": 0.33,
+      "plot": {
+        "name": "位移3",
+        "type": 1,
+        "component": "URES: 合位移",
+        "deformed": true,
+        "scale": 1,
+        "error": 0,
+        "settings": [
+          3,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          178,
+          178,
+          178,
+          0.8999999761581421
+        ]
+      },
+      "fixed_boundary": {
+        "name": "固定-1",
+        "type": 2,
+        "state": 0,
+        "entities": [
+          {
+            "kind": "face",
+            "box_m": [
+              -0.02,
+              -0.015,
+              -0.02,
+              0.02,
+              -0.015,
+              0.02
+            ],
+            "cylindrical": false,
+            "cylinder_params": null,
+            "normal": [
+              0,
+              -1,
+              0
+            ]
+          }
+        ],
+        "reference": {
+          "kind": "null"
+        },
+        "reference_error": 0,
+        "direction": [
+          0,
+          0,
+          1
+        ],
+        "restraint_type": 0,
+        "translation_flags": [
+          0,
+          0,
+          0
+        ],
+        "translation_values": [
+          0,
+          0,
+          0
+        ]
+      },
+      "text_image_match": true,
+      "solver_run": false,
+      "axial_roller_count": 2,
+      "guide_constrained_global_axis": "Z"
+    },
+    {
+      "image": "assets/pin-plan-mesh-solidworks.png",
+      "image_sha256": "5c3218d8b654c2b5da0108fbb0c6e9d189b6562bf49c6a50f0e1c64f9053de40",
+      "evidence": "live native result readback",
+      "study": "AgentPin_Guided",
+      "nominal_element_size_mm": 3,
+      "node_count": 51985,
+      "element_count": 33407,
+      "max_URES_mm": 0.01121470332145691,
+      "global_forces_N": [
+        [
+          1000,
+          0,
+          0
+        ]
+      ],
+      "contact_set_count": 2,
+      "linear_elastic_isotropic": true,
+      "elastic_modulus_Pa": 69000000666.13725,
+      "poisson_ratio": 0.33,
+      "plot": {
+        "name": "位移2",
+        "type": 1,
+        "component": "URES: 合位移",
+        "deformed": true,
+        "scale": 1,
+        "error": 0,
+        "settings": [
+          3,
+          2,
+          0,
+          0,
+          0,
+          0,
+          1,
+          178,
+          178,
+          178,
+          0.8999999761581421
+        ]
+      },
+      "fixed_boundary": {
+        "name": "固定-1",
+        "type": 2,
+        "state": 0,
+        "entities": [
+          {
+            "kind": "face",
+            "box_m": [
+              -0.02,
+              -0.015,
+              -0.02,
+              0.02,
+              -0.015,
+              0.02
+            ],
+            "cylindrical": false,
+            "cylinder_params": null,
+            "normal": [
+              0,
+              -1,
+              0
+            ]
+          }
+        ],
+        "reference": {
+          "kind": "null"
+        },
+        "reference_error": 0,
+        "direction": [
+          0,
+          0,
+          1
+        ],
+        "restraint_type": 0,
+        "translation_flags": [
+          0,
+          0,
+          0
+        ],
+        "translation_values": [
+          0,
+          0,
+          0
+        ]
+      },
+      "text_image_match": true,
+      "solver_run": false,
+      "axial_roller_count": 2,
+      "guide_constrained_global_axis": "Z"
+    },
+    {
+      "image": "assets/pin-contact-diagnostic-solidworks.png",
+      "image_sha256": "9f5203347e72cf376f72e6e7010e9aa49551a9bd0ab6a7988bbb1d2f8a6ac27f",
+      "evidence": "historical 4 mm solve trace and original screenshot; not a new live 4 mm solve",
+      "study": "Pin_NoPen_1000N",
+      "nominal_element_size_mm": 4,
+      "max_URES_mm": 0.373049259185791,
+      "node_count": 24516,
+      "element_count": 15115,
+      "text_image_match": true,
+      "engineering_validity": "diagnostic only; insufficient constraints",
+      "solver_run": false
+    },
+    {
+      "image": "assets/geometry-preview.png",
+      "image_sha256": "0ec288f1d5ae8a9265b8c7ca88cbd1ec72470379b75940fac10b501e5222ce6c",
+      "evidence": "original geometry inspection and source-image hash",
+      "face_count": 12,
+      "edge_count": 20,
+      "vertex_count": 8,
+      "finite_element_result": false,
+      "text_image_match": true,
+      "solver_run": false
+    },
+    {
+      "image": "assets/single-load-1000n-viewport.png",
+      "image_sha256": "39e0733ac27dcdbb7d6bc43d7efa4d073c9ad585f78bca463931b8767f222f60",
+      "evidence": "archived alternate screenshot of matched study",
+      "same_study_as": "assets/single-load-1000n-solidworks.png",
+      "text_image_match": true,
+      "solver_run": false
+    },
+    {
+      "image": "assets/pin-plan-solidworks.png",
+      "image_sha256": "92177de041e4c82952e3773bfd6aab687d4ea96779915ee0344ba81a5faa514f",
+      "evidence": "archived alternate screenshot of matched study",
+      "same_study_as": "assets/pin-plan-mesh-solidworks.png",
+      "text_image_match": true,
+      "solver_run": false
+    }
+  ],
+  "solver_run": false,
+  "images_replaced": false,
+  "original_native_files_unchanged": true,
+  "execution": "guarded direct COM readback on audit copies in the existing SW2020 process; MCP Simulation attach unavailable in this session",
+  "limits": [
+    "Diagnostic 4 mm screenshot verified against historical trace, not a new solve.",
+    "Images alone do not establish force components, nominal mesh size or convergence.",
+    "No additional physical installation or strength validation performed."
+  ]
+}
