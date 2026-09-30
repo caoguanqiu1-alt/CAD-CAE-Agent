@@ -1,4 +1,4 @@
-# CAD-CAE Agent — SolidWorks 建模与仿真
+# CAD-CAE With Agent — SolidWorks 建模与仿真
 
 **CAD/CAE 案例 + 可复跑对照实验**
 
@@ -216,7 +216,7 @@ API 导出的双孔连杆模型预览。该阶段识别了 12 个面、20 条边
 
 完整数值、反力和求解限制见[CAE 验证记录](docs/cae/verification.md)，所有图片来源见[图集记录](docs/cae/gallery.md)。位移收敛不能自动替代峰值应力或接触压力的收敛检查。
 
-## 从 API 绘图到 CAD-CAE Agent
+## 从 API 绘图到 CAD-CAE With Agent
 
 最初的本机目标是通过 C# COM API 直接控制 SOLIDWORKS，生成 `Sketch1 → Boss-Extrude1`，并检查一个 100 × 60 × 10 mm 零件。现在的流程由 AI 客户端规划，MCP 暴露工具，Windows 上的 SOLIDWORKS COM 与 Simulation 执行建模、求解和结果回读。MCP 是工具接口；单独启动 MCP 不会形成独立自主的 Agent。
 
