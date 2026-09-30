@@ -1,0 +1,2113 @@
+{
+  "experiment": "cad-cae-offline-controls/1",
+  "run_utc": "2026-09-30T04:15:22.643896+00:00",
+  "scope": "Real MCP stdio and production pure handlers; synthetic faults; no LLM, COM, CAD or FEA",
+  "environment": {
+    "os": "Windows",
+    "os_release": "11",
+    "python": "3.13.15",
+    "packages": {
+      "fastmcp": "4.0.10",
+      "mcp": "2.2.0",
+      "pydantic": "2.13.5"
+    }
+  },
+  "source_commit": "35781348e56e3181d2d4736b3a2c5fc9fc765703",
+  "source_sha256_normalization": "UTF-8 source bytes with CRLF normalized to LF",
+  "source_sha256": {
+    "src/solidworks_mcp/sw2020_plan.py": "fc6970370b6ef84334c034617469b4a920d785fbe6416dc72a3f3a9cb274cbbe",
+    "src/solidworks_mcp/sw2020_workflow.py": "d2ff8b7c1a6299d383a336b787d4189b9e836add0300a6fec8427dbfa132ab9b",
+    "src/solidworks_mcp/simulation_plan.py": "61e97ef6569030cb17a42c144b151e6dca371cc414d1f802fb94379e1a3074ae",
+    "experiments/agent_workflow_benchmark.py": "82f6c775aa921a9054fb14a6e5e6d111df9a899e34b68c774fc4c1a0a64afec0"
+  },
+  "cold_start_initialize_ms": 1569.1293,
+  "timing": {
+    "nodes": 12,
+    "warmup_pairs": 5,
+    "repetitions": 40,
+    "compiled_groups_equal_every_time": true,
+    "individual_calls_per_task": 12,
+    "batch_calls_per_task": 1,
+    "individual": {
+      "n": 40,
+      "median_ms": 16.553600000000003,
+      "p95_ms": 20.0537,
+      "min_ms": 14.3635,
+      "max_ms": 21.7331
+    },
+    "batch": {
+      "n": 40,
+      "median_ms": 1.96855,
+      "p95_ms": 2.4578,
+      "min_ms": 1.6184,
+      "max_ms": 2.541
+    },
+    "direct_batch": {
+      "n": 40,
+      "median_ms": 0.24725000000000003,
+      "p95_ms": 0.4833,
+      "min_ms": 0.2186,
+      "max_ms": 0.5019
+    },
+    "call_reduction_percent": 91.66666666666666,
+    "median_latency_reduction_percent": 88.10802484051807,
+    "median_speed_ratio": 8.40903202865053,
+    "input_plan_bytes_utf8": {
+      "individual_total": 3786,
+      "batch": 2500
+    },
+    "samples": [
+      {
+        "repetition": 1,
+        "order": "individual,batch",
+        "individual_ms": 19.0772,
+        "batch_ms": 2.3827,
+        "direct_batch_ms": 0.4013
+      },
+      {
+        "repetition": 2,
+        "order": "batch,individual",
+        "batch_ms": 2.1258,
+        "individual_ms": 15.5776,
+        "direct_batch_ms": 0.2422
+      },
+      {
+        "repetition": 3,
+        "order": "individual,batch",
+        "individual_ms": 16.1192,
+        "batch_ms": 1.7106,
+        "direct_batch_ms": 0.2186
+      },
+      {
+        "repetition": 4,
+        "order": "batch,individual",
+        "batch_ms": 2.1016,
+        "individual_ms": 18.9166,
+        "direct_batch_ms": 0.4052
+      },
+      {
+        "repetition": 5,
+        "order": "individual,batch",
+        "individual_ms": 18.3213,
+        "batch_ms": 2.1022,
+        "direct_batch_ms": 0.3864
+      },
+      {
+        "repetition": 6,
+        "order": "batch,individual",
+        "batch_ms": 2.3758,
+        "individual_ms": 18.7913,
+        "direct_batch_ms": 0.4855
+      },
+      {
+        "repetition": 7,
+        "order": "individual,batch",
+        "individual_ms": 18.4722,
+        "batch_ms": 2.2282,
+        "direct_batch_ms": 0.3859
+      },
+      {
+        "repetition": 8,
+        "order": "batch,individual",
+        "batch_ms": 2.3984,
+        "individual_ms": 17.6707,
+        "direct_batch_ms": 0.422
+      },
+      {
+        "repetition": 9,
+        "order": "individual,batch",
+        "individual_ms": 19.5939,
+        "batch_ms": 2.35,
+        "direct_batch_ms": 0.4833
+      },
+      {
+        "repetition": 10,
+        "order": "batch,individual",
+        "batch_ms": 2.2666,
+        "individual_ms": 17.3434,
+        "direct_batch_ms": 0.4088
+      },
+      {
+        "repetition": 11,
+        "order": "individual,batch",
+        "individual_ms": 18.0397,
+        "batch_ms": 2.0442,
+        "direct_batch_ms": 0.4168
+      },
+      {
+        "repetition": 12,
+        "order": "batch,individual",
+        "batch_ms": 2.227,
+        "individual_ms": 20.0537,
+        "direct_batch_ms": 0.4137
+      },
+      {
+        "repetition": 13,
+        "order": "individual,batch",
+        "individual_ms": 19.3894,
+        "batch_ms": 2.541,
+        "direct_batch_ms": 0.4247
+      },
+      {
+        "repetition": 14,
+        "order": "batch,individual",
+        "batch_ms": 2.5002,
+        "individual_ms": 19.119,
+        "direct_batch_ms": 0.4516
+      },
+      {
+        "repetition": 15,
+        "order": "individual,batch",
+        "individual_ms": 17.2413,
+        "batch_ms": 2.0331,
+        "direct_batch_ms": 0.236
+      },
+      {
+        "repetition": 16,
+        "order": "batch,individual",
+        "batch_ms": 1.8371,
+        "individual_ms": 15.9884,
+        "direct_batch_ms": 0.5019
+      },
+      {
+        "repetition": 17,
+        "order": "individual,batch",
+        "individual_ms": 21.2527,
+        "batch_ms": 2.1691,
+        "direct_batch_ms": 0.4539
+      },
+      {
+        "repetition": 18,
+        "order": "batch,individual",
+        "batch_ms": 2.1441,
+        "individual_ms": 18.943,
+        "direct_batch_ms": 0.395
+      },
+      {
+        "repetition": 19,
+        "order": "individual,batch",
+        "individual_ms": 16.3928,
+        "batch_ms": 1.8104,
+        "direct_batch_ms": 0.2377
+      },
+      {
+        "repetition": 20,
+        "order": "batch,individual",
+        "batch_ms": 1.8038,
+        "individual_ms": 16.4834,
+        "direct_batch_ms": 0.2256
+      },
+      {
+        "repetition": 21,
+        "order": "individual,batch",
+        "individual_ms": 14.3635,
+        "batch_ms": 1.9879,
+        "direct_batch_ms": 0.3803
+      },
+      {
+        "repetition": 22,
+        "order": "batch,individual",
+        "batch_ms": 1.8845,
+        "individual_ms": 16.1719,
+        "direct_batch_ms": 0.2302
+      },
+      {
+        "repetition": 23,
+        "order": "individual,batch",
+        "individual_ms": 16.5118,
+        "batch_ms": 2.0745,
+        "direct_batch_ms": 0.4065
+      },
+      {
+        "repetition": 24,
+        "order": "batch,individual",
+        "batch_ms": 2.0605,
+        "individual_ms": 17.504,
+        "direct_batch_ms": 0.2544
+      },
+      {
+        "repetition": 25,
+        "order": "individual,batch",
+        "individual_ms": 15.6059,
+        "batch_ms": 1.7562,
+        "direct_batch_ms": 0.2278
+      },
+      {
+        "repetition": 26,
+        "order": "batch,individual",
+        "batch_ms": 1.8204,
+        "individual_ms": 15.2777,
+        "direct_batch_ms": 0.2349
+      },
+      {
+        "repetition": 27,
+        "order": "individual,batch",
+        "individual_ms": 15.6047,
+        "batch_ms": 1.7833,
+        "direct_batch_ms": 0.2523
+      },
+      {
+        "repetition": 28,
+        "order": "batch,individual",
+        "batch_ms": 1.8064,
+        "individual_ms": 15.6511,
+        "direct_batch_ms": 0.2238
+      },
+      {
+        "repetition": 29,
+        "order": "individual,batch",
+        "individual_ms": 16.5954,
+        "batch_ms": 1.8121,
+        "direct_batch_ms": 0.2234
+      },
+      {
+        "repetition": 30,
+        "order": "batch,individual",
+        "batch_ms": 2.4578,
+        "individual_ms": 16.2387,
+        "direct_batch_ms": 0.2346
+      },
+      {
+        "repetition": 31,
+        "order": "individual,batch",
+        "individual_ms": 19.1571,
+        "batch_ms": 1.8544,
+        "direct_batch_ms": 0.2293
+      },
+      {
+        "repetition": 32,
+        "order": "batch,individual",
+        "batch_ms": 1.802,
+        "individual_ms": 15.5242,
+        "direct_batch_ms": 0.2303
+      },
+      {
+        "repetition": 33,
+        "order": "individual,batch",
+        "individual_ms": 16.0622,
+        "batch_ms": 1.7695,
+        "direct_batch_ms": 0.2414
+      },
+      {
+        "repetition": 34,
+        "order": "batch,individual",
+        "batch_ms": 1.7781,
+        "individual_ms": 15.2674,
+        "direct_batch_ms": 0.2233
+      },
+      {
+        "repetition": 35,
+        "order": "individual,batch",
+        "individual_ms": 16.3887,
+        "batch_ms": 1.8212,
+        "direct_batch_ms": 0.2331
+      },
+      {
+        "repetition": 36,
+        "order": "batch,individual",
+        "batch_ms": 1.8382,
+        "individual_ms": 15.8515,
+        "direct_batch_ms": 0.2304
+      },
+      {
+        "repetition": 37,
+        "order": "individual,batch",
+        "individual_ms": 15.7569,
+        "batch_ms": 1.9492,
+        "direct_batch_ms": 0.2234
+      },
+      {
+        "repetition": 38,
+        "order": "batch,individual",
+        "batch_ms": 1.6184,
+        "individual_ms": 17.0596,
+        "direct_batch_ms": 0.2387
+      },
+      {
+        "repetition": 39,
+        "order": "individual,batch",
+        "individual_ms": 15.7476,
+        "batch_ms": 1.7122,
+        "direct_batch_ms": 0.2322
+      },
+      {
+        "repetition": 40,
+        "order": "batch,individual",
+        "batch_ms": 1.9379,
+        "individual_ms": 21.7331,
+        "direct_batch_ms": 0.3918
+      }
+    ]
+  },
+  "input_validation": {
+    "invalid_cases": 12,
+    "valid_controls": 2,
+    "unchecked_forwarder_faults_rejected": 0,
+    "schema_faults_rejected": 12,
+    "schema_valid_controls_accepted": 2,
+    "cases": [
+      {
+        "case": "wrong_schema",
+        "input": {
+          "schema_version": "sw2020-plan/99",
+          "target_year": 2020,
+          "units": "mm",
+          "expected": {
+            "volume_mm3": 60000
+          },
+          "nodes": [
+            {
+              "id": "node_0",
+              "operation": {
+                "name": "凸台0",
+                "sketch_name": "草图0",
+                "plane": "Front",
+                "kind": "boss",
+                "depth": 10,
+                "shapes": [
+                  {
+                    "kind": "rectangle",
+                    "x": 0,
+                    "width": 100,
+                    "height": 60
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "injected_fault": true,
+        "unchecked_forwarder_rejected": false,
+        "schema_rejected": true,
+        "compiled_node_order": null
+      },
+      {
+        "case": "wrong_year",
+        "input": {
+          "schema_version": "sw2020-plan/1",
+          "target_year": 2026,
+          "units": "mm",
+          "expected": {
+            "volume_mm3": 60000
+          },
+          "nodes": [
+            {
+              "id": "node_0",
+              "operation": {
+                "name": "凸台0",
+                "sketch_name": "草图0",
+                "plane": "Front",
+                "kind": "boss",
+                "depth": 10,
+                "shapes": [
+                  {
+                    "kind": "rectangle",
+                    "x": 0,
+                    "width": 100,
+                    "height": 60
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "injected_fault": true,
+        "unchecked_forwarder_rejected": false,
+        "schema_rejected": true,
+        "compiled_node_order": null
+      },
+      {
+        "case": "wrong_units",
+        "input": {
+          "schema_version": "sw2020-plan/1",
+          "target_year": 2020,
+          "units": "m",
+          "expected": {
+            "volume_mm3": 60000
+          },
+          "nodes": [
+            {
+              "id": "node_0",
+              "operation": {
+                "name": "凸台0",
+                "sketch_name": "草图0",
+                "plane": "Front",
+                "kind": "boss",
+                "depth": 10,
+                "shapes": [
+                  {
+                    "kind": "rectangle",
+                    "x": 0,
+                    "width": 100,
+                    "height": 60
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "injected_fault": true,
+        "unchecked_forwarder_rejected": false,
+        "schema_rejected": true,
+        "compiled_node_order": null
+      },
+      {
+        "case": "unknown_field",
+        "input": {
+          "schema_version": "sw2020-plan/1",
+          "target_year": 2020,
+          "units": "mm",
+          "expected": {
+            "volume_mm3": 60000
+          },
+          "nodes": [
+            {
+              "id": "node_0",
+              "operation": {
+                "name": "凸台0",
+                "sketch_name": "草图0",
+                "plane": "Front",
+                "kind": "boss",
+                "depth": 10,
+                "shapes": [
+                  {
+                    "kind": "rectangle",
+                    "x": 0,
+                    "width": 100,
+                    "height": 60
+                  }
+                ]
+              }
+            }
+          ],
+          "script": "unrecognized"
+        },
+        "injected_fault": true,
+        "unchecked_forwarder_rejected": false,
+        "schema_rejected": true,
+        "compiled_node_order": null
+      },
+      {
+        "case": "empty_nodes",
+        "input": {
+          "schema_version": "sw2020-plan/1",
+          "target_year": 2020,
+          "units": "mm",
+          "expected": {
+            "volume_mm3": 60000
+          },
+          "nodes": []
+        },
+        "injected_fault": true,
+        "unchecked_forwarder_rejected": false,
+        "schema_rejected": true,
+        "compiled_node_order": null
+      },
+      {
+        "case": "missing_expected_metrics",
+        "input": {
+          "schema_version": "sw2020-plan/1",
+          "target_year": 2020,
+          "units": "mm",
+          "nodes": [
+            {
+              "id": "node_0",
+              "operation": {
+                "name": "凸台0",
+                "sketch_name": "草图0",
+                "plane": "Front",
+                "kind": "boss",
+                "depth": 10,
+                "shapes": [
+                  {
+                    "kind": "rectangle",
+                    "x": 0,
+                    "width": 100,
+                    "height": 60
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "injected_fault": true,
+        "unchecked_forwarder_rejected": false,
+        "schema_rejected": true,
+        "compiled_node_order": null
+      },
+      {
+        "case": "duplicate_node_id",
+        "input": {
+          "schema_version": "sw2020-plan/1",
+          "target_year": 2020,
+          "units": "mm",
+          "expected": {
+            "volume_mm3": 120000
+          },
+          "nodes": [
+            {
+              "id": "node_0",
+              "operation": {
+                "name": "凸台0",
+                "sketch_name": "草图0",
+                "plane": "Front",
+                "kind": "boss",
+                "depth": 10,
+                "shapes": [
+                  {
+                    "kind": "rectangle",
+                    "x": 0,
+                    "width": 100,
+                    "height": 60
+                  }
+                ]
+              }
+            },
+            {
+              "id": "node_0",
+              "operation": {
+                "name": "凸台1",
+                "sketch_name": "草图1",
+                "plane": "Front",
+                "kind": "boss",
+                "depth": 10,
+                "shapes": [
+                  {
+                    "kind": "rectangle",
+                    "x": 100,
+                    "width": 100,
+                    "height": 60
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "injected_fault": true,
+        "unchecked_forwarder_rejected": false,
+        "schema_rejected": true,
+        "compiled_node_order": null
+      },
+      {
+        "case": "duplicate_feature_name",
+        "input": {
+          "schema_version": "sw2020-plan/1",
+          "target_year": 2020,
+          "units": "mm",
+          "expected": {
+            "volume_mm3": 120000
+          },
+          "nodes": [
+            {
+              "id": "node_0",
+              "operation": {
+                "name": "凸台0",
+                "sketch_name": "草图0",
+                "plane": "Front",
+                "kind": "boss",
+                "depth": 10,
+                "shapes": [
+                  {
+                    "kind": "rectangle",
+                    "x": 0,
+                    "width": 100,
+                    "height": 60
+                  }
+                ]
+              }
+            },
+            {
+              "id": "node_1",
+              "operation": {
+                "name": "凸台0",
+                "sketch_name": "草图1",
+                "plane": "Front",
+                "kind": "boss",
+                "depth": 10,
+                "shapes": [
+                  {
+                    "kind": "rectangle",
+                    "x": 100,
+                    "width": 100,
+                    "height": 60
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "injected_fault": true,
+        "unchecked_forwarder_rejected": false,
+        "schema_rejected": true,
+        "compiled_node_order": null
+      },
+      {
+        "case": "missing_dependency",
+        "input": {
+          "schema_version": "sw2020-plan/1",
+          "target_year": 2020,
+          "units": "mm",
+          "expected": {
+            "volume_mm3": 60000
+          },
+          "nodes": [
+            {
+              "id": "node_0",
+              "operation": {
+                "name": "凸台0",
+                "sketch_name": "草图0",
+                "plane": "Front",
+                "kind": "boss",
+                "depth": 10,
+                "shapes": [
+                  {
+                    "kind": "rectangle",
+                    "x": 0,
+                    "width": 100,
+                    "height": 60
+                  }
+                ]
+              },
+              "depends_on": [
+                "missing"
+              ]
+            }
+          ]
+        },
+        "injected_fault": true,
+        "unchecked_forwarder_rejected": false,
+        "schema_rejected": true,
+        "compiled_node_order": null
+      },
+      {
+        "case": "dependency_cycle",
+        "input": {
+          "schema_version": "sw2020-plan/1",
+          "target_year": 2020,
+          "units": "mm",
+          "expected": {
+            "volume_mm3": 120000
+          },
+          "nodes": [
+            {
+              "id": "node_0",
+              "operation": {
+                "name": "凸台0",
+                "sketch_name": "草图0",
+                "plane": "Front",
+                "kind": "boss",
+                "depth": 10,
+                "shapes": [
+                  {
+                    "kind": "rectangle",
+                    "x": 0,
+                    "width": 100,
+                    "height": 60
+                  }
+                ]
+              },
+              "depends_on": [
+                "node_1"
+              ]
+            },
+            {
+              "id": "node_1",
+              "operation": {
+                "name": "凸台1",
+                "sketch_name": "草图1",
+                "plane": "Front",
+                "kind": "boss",
+                "depth": 10,
+                "shapes": [
+                  {
+                    "kind": "rectangle",
+                    "x": 100,
+                    "width": 100,
+                    "height": 60
+                  }
+                ]
+              },
+              "depends_on": [
+                "node_0"
+              ]
+            }
+          ]
+        },
+        "injected_fault": true,
+        "unchecked_forwarder_rejected": false,
+        "schema_rejected": true,
+        "compiled_node_order": null
+      },
+      {
+        "case": "zero_depth",
+        "input": {
+          "schema_version": "sw2020-plan/1",
+          "target_year": 2020,
+          "units": "mm",
+          "expected": {
+            "volume_mm3": 60000
+          },
+          "nodes": [
+            {
+              "id": "node_0",
+              "operation": {
+                "name": "凸台0",
+                "sketch_name": "草图0",
+                "plane": "Front",
+                "kind": "boss",
+                "depth": 0,
+                "shapes": [
+                  {
+                    "kind": "rectangle",
+                    "x": 0,
+                    "width": 100,
+                    "height": 60
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "injected_fault": true,
+        "unchecked_forwarder_rejected": false,
+        "schema_rejected": true,
+        "compiled_node_order": null
+      },
+      {
+        "case": "negative_width",
+        "input": {
+          "schema_version": "sw2020-plan/1",
+          "target_year": 2020,
+          "units": "mm",
+          "expected": {
+            "volume_mm3": 60000
+          },
+          "nodes": [
+            {
+              "id": "node_0",
+              "operation": {
+                "name": "凸台0",
+                "sketch_name": "草图0",
+                "plane": "Front",
+                "kind": "boss",
+                "depth": 10,
+                "shapes": [
+                  {
+                    "kind": "rectangle",
+                    "x": 0,
+                    "width": -1,
+                    "height": 60
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "injected_fault": true,
+        "unchecked_forwarder_rejected": false,
+        "schema_rejected": true,
+        "compiled_node_order": null
+      },
+      {
+        "case": "valid_single",
+        "input": {
+          "schema_version": "sw2020-plan/1",
+          "target_year": 2020,
+          "units": "mm",
+          "expected": {
+            "volume_mm3": 60000
+          },
+          "nodes": [
+            {
+              "id": "node_0",
+              "operation": {
+                "name": "凸台0",
+                "sketch_name": "草图0",
+                "plane": "Front",
+                "kind": "boss",
+                "depth": 10,
+                "shapes": [
+                  {
+                    "kind": "rectangle",
+                    "x": 0,
+                    "width": 100,
+                    "height": 60
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "injected_fault": false,
+        "unchecked_forwarder_rejected": false,
+        "schema_rejected": false,
+        "compiled_node_order": [
+          "node_0"
+        ]
+      },
+      {
+        "case": "valid_unsorted_dependency",
+        "input": {
+          "schema_version": "sw2020-plan/1",
+          "target_year": 2020,
+          "units": "mm",
+          "expected": {
+            "volume_mm3": 120000
+          },
+          "nodes": [
+            {
+              "id": "node_1",
+              "operation": {
+                "name": "凸台1",
+                "sketch_name": "草图1",
+                "plane": "Front",
+                "kind": "boss",
+                "depth": 10,
+                "shapes": [
+                  {
+                    "kind": "rectangle",
+                    "x": 100,
+                    "width": 100,
+                    "height": 60
+                  }
+                ]
+              },
+              "depends_on": [
+                "node_0"
+              ]
+            },
+            {
+              "id": "node_0",
+              "operation": {
+                "name": "凸台0",
+                "sketch_name": "草图0",
+                "plane": "Front",
+                "kind": "boss",
+                "depth": 10,
+                "shapes": [
+                  {
+                    "kind": "rectangle",
+                    "x": 0,
+                    "width": 100,
+                    "height": 60
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "injected_fault": false,
+        "unchecked_forwarder_rejected": false,
+        "schema_rejected": false,
+        "compiled_node_order": [
+          "node_0",
+          "node_1"
+        ]
+      }
+    ],
+    "known_scope_limits": [
+      {
+        "case": "unavailable_plane",
+        "input": {
+          "schema_version": "sw2020-plan/1",
+          "target_year": 2020,
+          "units": "mm",
+          "expected": {
+            "volume_mm3": 60000
+          },
+          "nodes": [
+            {
+              "id": "node_0",
+              "operation": {
+                "name": "凸台0",
+                "sketch_name": "草图0",
+                "plane": "NonexistentPlane",
+                "kind": "boss",
+                "depth": 10,
+                "shapes": [
+                  {
+                    "kind": "rectangle",
+                    "x": 0,
+                    "width": 100,
+                    "height": 60
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "schema_accepted": true,
+        "requires": "Live plane resolution or independent geometry/expectation checking"
+      },
+      {
+        "case": "inconsistent_analytic_expectation",
+        "input": {
+          "schema_version": "sw2020-plan/1",
+          "target_year": 2020,
+          "units": "mm",
+          "expected": {
+            "volume_mm3": 123
+          },
+          "nodes": [
+            {
+              "id": "node_0",
+              "operation": {
+                "name": "凸台0",
+                "sketch_name": "草图0",
+                "plane": "Front",
+                "kind": "boss",
+                "depth": 10,
+                "shapes": [
+                  {
+                    "kind": "rectangle",
+                    "x": 0,
+                    "width": 100,
+                    "height": 60
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "schema_accepted": true,
+        "requires": "Live plane resolution or independent geometry/expectation checking"
+      }
+    ]
+  },
+  "result_validation": {
+    "reference": {
+      "revision": "28.5.0",
+      "document": "synthetic-part",
+      "path": "",
+      "dirty": true,
+      "metrics": {
+        "solid_bodies": 1,
+        "volume_mm3": 60000,
+        "area_mm2": 15200,
+        "center_mm": [
+          0,
+          0,
+          5
+        ],
+        "faces": 6,
+        "edges": 12,
+        "vertices": 8
+      },
+      "feature_types": {
+        "凸台0": "Extrusion"
+      }
+    },
+    "fault_cases": 8,
+    "valid_controls": 2,
+    "status_only_faults_detected": 0,
+    "comparison_faults_detected": 8,
+    "comparison_valid_controls_accepted": 2,
+    "cases": [
+      {
+        "case": "solid_bodies",
+        "injected_fault": true,
+        "upstream_status": "success",
+        "candidate": {
+          "revision": "28.5.0",
+          "document": "synthetic-part",
+          "path": "",
+          "dirty": true,
+          "metrics": {
+            "solid_bodies": 2,
+            "volume_mm3": 60000,
+            "area_mm2": 15200,
+            "center_mm": [
+              0,
+              0,
+              5
+            ],
+            "faces": 6,
+            "edges": 12,
+            "vertices": 8
+          },
+          "feature_types": {
+            "凸台0": "Extrusion"
+          }
+        },
+        "status_only_accepted": true,
+        "compared_accepted": false,
+        "comparison": {
+          "status": "mismatch",
+          "checks": [
+            {
+              "metric": "solid_bodies",
+              "expected": 1,
+              "actual": 2,
+              "absolute_difference": 1,
+              "tolerance": 0,
+              "matched": false
+            },
+            {
+              "metric": "volume_mm3",
+              "expected": 60000.0,
+              "actual": 60000.0,
+              "absolute_difference": 0.0,
+              "tolerance": 0.01,
+              "matched": true
+            },
+            {
+              "metric": "area_mm2",
+              "expected": 15200.0,
+              "actual": 15200.0,
+              "absolute_difference": 0.0,
+              "tolerance": 0.01,
+              "matched": true
+            },
+            {
+              "metric": "center_mm",
+              "expected": [
+                0.0,
+                0.0,
+                5.0
+              ],
+              "actual": [
+                0.0,
+                0.0,
+                5.0
+              ],
+              "absolute_difference": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "tolerance": 0.001,
+              "matched": true
+            },
+            {
+              "metric": "faces",
+              "expected": 6,
+              "actual": 6,
+              "absolute_difference": 0,
+              "tolerance": 0,
+              "matched": true
+            },
+            {
+              "metric": "edges",
+              "expected": 12,
+              "actual": 12,
+              "absolute_difference": 0,
+              "tolerance": 0,
+              "matched": true
+            },
+            {
+              "metric": "vertices",
+              "expected": 8,
+              "actual": 8,
+              "absolute_difference": 0,
+              "tolerance": 0,
+              "matched": true
+            }
+          ],
+          "scope": "Metric agreement only; topology counts are not a BREP equivalence proof, and this does not verify constraints, material, drawing dimensions or design intent.",
+          "feature_types_match": true,
+          "reference_document": "synthetic-part",
+          "candidate_document": "synthetic-part",
+          "live_verification": false
+        }
+      },
+      {
+        "case": "volume_mm3",
+        "injected_fault": true,
+        "upstream_status": "success",
+        "candidate": {
+          "revision": "28.5.0",
+          "document": "synthetic-part",
+          "path": "",
+          "dirty": true,
+          "metrics": {
+            "solid_bodies": 1,
+            "volume_mm3": 54000,
+            "area_mm2": 15200,
+            "center_mm": [
+              0,
+              0,
+              5
+            ],
+            "faces": 6,
+            "edges": 12,
+            "vertices": 8
+          },
+          "feature_types": {
+            "凸台0": "Extrusion"
+          }
+        },
+        "status_only_accepted": true,
+        "compared_accepted": false,
+        "comparison": {
+          "status": "mismatch",
+          "checks": [
+            {
+              "metric": "solid_bodies",
+              "expected": 1,
+              "actual": 1,
+              "absolute_difference": 0,
+              "tolerance": 0,
+              "matched": true
+            },
+            {
+              "metric": "volume_mm3",
+              "expected": 60000.0,
+              "actual": 54000.0,
+              "absolute_difference": 6000.0,
+              "tolerance": 0.01,
+              "matched": false
+            },
+            {
+              "metric": "area_mm2",
+              "expected": 15200.0,
+              "actual": 15200.0,
+              "absolute_difference": 0.0,
+              "tolerance": 0.01,
+              "matched": true
+            },
+            {
+              "metric": "center_mm",
+              "expected": [
+                0.0,
+                0.0,
+                5.0
+              ],
+              "actual": [
+                0.0,
+                0.0,
+                5.0
+              ],
+              "absolute_difference": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "tolerance": 0.001,
+              "matched": true
+            },
+            {
+              "metric": "faces",
+              "expected": 6,
+              "actual": 6,
+              "absolute_difference": 0,
+              "tolerance": 0,
+              "matched": true
+            },
+            {
+              "metric": "edges",
+              "expected": 12,
+              "actual": 12,
+              "absolute_difference": 0,
+              "tolerance": 0,
+              "matched": true
+            },
+            {
+              "metric": "vertices",
+              "expected": 8,
+              "actual": 8,
+              "absolute_difference": 0,
+              "tolerance": 0,
+              "matched": true
+            }
+          ],
+          "scope": "Metric agreement only; topology counts are not a BREP equivalence proof, and this does not verify constraints, material, drawing dimensions or design intent.",
+          "feature_types_match": true,
+          "reference_document": "synthetic-part",
+          "candidate_document": "synthetic-part",
+          "live_verification": false
+        }
+      },
+      {
+        "case": "area_mm2",
+        "injected_fault": true,
+        "upstream_status": "success",
+        "candidate": {
+          "revision": "28.5.0",
+          "document": "synthetic-part",
+          "path": "",
+          "dirty": true,
+          "metrics": {
+            "solid_bodies": 1,
+            "volume_mm3": 60000,
+            "area_mm2": 14000,
+            "center_mm": [
+              0,
+              0,
+              5
+            ],
+            "faces": 6,
+            "edges": 12,
+            "vertices": 8
+          },
+          "feature_types": {
+            "凸台0": "Extrusion"
+          }
+        },
+        "status_only_accepted": true,
+        "compared_accepted": false,
+        "comparison": {
+          "status": "mismatch",
+          "checks": [
+            {
+              "metric": "solid_bodies",
+              "expected": 1,
+              "actual": 1,
+              "absolute_difference": 0,
+              "tolerance": 0,
+              "matched": true
+            },
+            {
+              "metric": "volume_mm3",
+              "expected": 60000.0,
+              "actual": 60000.0,
+              "absolute_difference": 0.0,
+              "tolerance": 0.01,
+              "matched": true
+            },
+            {
+              "metric": "area_mm2",
+              "expected": 15200.0,
+              "actual": 14000.0,
+              "absolute_difference": 1200.0,
+              "tolerance": 0.01,
+              "matched": false
+            },
+            {
+              "metric": "center_mm",
+              "expected": [
+                0.0,
+                0.0,
+                5.0
+              ],
+              "actual": [
+                0.0,
+                0.0,
+                5.0
+              ],
+              "absolute_difference": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "tolerance": 0.001,
+              "matched": true
+            },
+            {
+              "metric": "faces",
+              "expected": 6,
+              "actual": 6,
+              "absolute_difference": 0,
+              "tolerance": 0,
+              "matched": true
+            },
+            {
+              "metric": "edges",
+              "expected": 12,
+              "actual": 12,
+              "absolute_difference": 0,
+              "tolerance": 0,
+              "matched": true
+            },
+            {
+              "metric": "vertices",
+              "expected": 8,
+              "actual": 8,
+              "absolute_difference": 0,
+              "tolerance": 0,
+              "matched": true
+            }
+          ],
+          "scope": "Metric agreement only; topology counts are not a BREP equivalence proof, and this does not verify constraints, material, drawing dimensions or design intent.",
+          "feature_types_match": true,
+          "reference_document": "synthetic-part",
+          "candidate_document": "synthetic-part",
+          "live_verification": false
+        }
+      },
+      {
+        "case": "center_mm",
+        "injected_fault": true,
+        "upstream_status": "success",
+        "candidate": {
+          "revision": "28.5.0",
+          "document": "synthetic-part",
+          "path": "",
+          "dirty": true,
+          "metrics": {
+            "solid_bodies": 1,
+            "volume_mm3": 60000,
+            "area_mm2": 15200,
+            "center_mm": [
+              0,
+              0,
+              4.5
+            ],
+            "faces": 6,
+            "edges": 12,
+            "vertices": 8
+          },
+          "feature_types": {
+            "凸台0": "Extrusion"
+          }
+        },
+        "status_only_accepted": true,
+        "compared_accepted": false,
+        "comparison": {
+          "status": "mismatch",
+          "checks": [
+            {
+              "metric": "solid_bodies",
+              "expected": 1,
+              "actual": 1,
+              "absolute_difference": 0,
+              "tolerance": 0,
+              "matched": true
+            },
+            {
+              "metric": "volume_mm3",
+              "expected": 60000.0,
+              "actual": 60000.0,
+              "absolute_difference": 0.0,
+              "tolerance": 0.01,
+              "matched": true
+            },
+            {
+              "metric": "area_mm2",
+              "expected": 15200.0,
+              "actual": 15200.0,
+              "absolute_difference": 0.0,
+              "tolerance": 0.01,
+              "matched": true
+            },
+            {
+              "metric": "center_mm",
+              "expected": [
+                0.0,
+                0.0,
+                5.0
+              ],
+              "actual": [
+                0.0,
+                0.0,
+                4.5
+              ],
+              "absolute_difference": [
+                0.0,
+                0.0,
+                0.5
+              ],
+              "tolerance": 0.001,
+              "matched": false
+            },
+            {
+              "metric": "faces",
+              "expected": 6,
+              "actual": 6,
+              "absolute_difference": 0,
+              "tolerance": 0,
+              "matched": true
+            },
+            {
+              "metric": "edges",
+              "expected": 12,
+              "actual": 12,
+              "absolute_difference": 0,
+              "tolerance": 0,
+              "matched": true
+            },
+            {
+              "metric": "vertices",
+              "expected": 8,
+              "actual": 8,
+              "absolute_difference": 0,
+              "tolerance": 0,
+              "matched": true
+            }
+          ],
+          "scope": "Metric agreement only; topology counts are not a BREP equivalence proof, and this does not verify constraints, material, drawing dimensions or design intent.",
+          "feature_types_match": true,
+          "reference_document": "synthetic-part",
+          "candidate_document": "synthetic-part",
+          "live_verification": false
+        }
+      },
+      {
+        "case": "faces",
+        "injected_fault": true,
+        "upstream_status": "success",
+        "candidate": {
+          "revision": "28.5.0",
+          "document": "synthetic-part",
+          "path": "",
+          "dirty": true,
+          "metrics": {
+            "solid_bodies": 1,
+            "volume_mm3": 60000,
+            "area_mm2": 15200,
+            "center_mm": [
+              0,
+              0,
+              5
+            ],
+            "faces": 7,
+            "edges": 12,
+            "vertices": 8
+          },
+          "feature_types": {
+            "凸台0": "Extrusion"
+          }
+        },
+        "status_only_accepted": true,
+        "compared_accepted": false,
+        "comparison": {
+          "status": "mismatch",
+          "checks": [
+            {
+              "metric": "solid_bodies",
+              "expected": 1,
+              "actual": 1,
+              "absolute_difference": 0,
+              "tolerance": 0,
+              "matched": true
+            },
+            {
+              "metric": "volume_mm3",
+              "expected": 60000.0,
+              "actual": 60000.0,
+              "absolute_difference": 0.0,
+              "tolerance": 0.01,
+              "matched": true
+            },
+            {
+              "metric": "area_mm2",
+              "expected": 15200.0,
+              "actual": 15200.0,
+              "absolute_difference": 0.0,
+              "tolerance": 0.01,
+              "matched": true
+            },
+            {
+              "metric": "center_mm",
+              "expected": [
+                0.0,
+                0.0,
+                5.0
+              ],
+              "actual": [
+                0.0,
+                0.0,
+                5.0
+              ],
+              "absolute_difference": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "tolerance": 0.001,
+              "matched": true
+            },
+            {
+              "metric": "faces",
+              "expected": 6,
+              "actual": 7,
+              "absolute_difference": 1,
+              "tolerance": 0,
+              "matched": false
+            },
+            {
+              "metric": "edges",
+              "expected": 12,
+              "actual": 12,
+              "absolute_difference": 0,
+              "tolerance": 0,
+              "matched": true
+            },
+            {
+              "metric": "vertices",
+              "expected": 8,
+              "actual": 8,
+              "absolute_difference": 0,
+              "tolerance": 0,
+              "matched": true
+            }
+          ],
+          "scope": "Metric agreement only; topology counts are not a BREP equivalence proof, and this does not verify constraints, material, drawing dimensions or design intent.",
+          "feature_types_match": true,
+          "reference_document": "synthetic-part",
+          "candidate_document": "synthetic-part",
+          "live_verification": false
+        }
+      },
+      {
+        "case": "edges",
+        "injected_fault": true,
+        "upstream_status": "success",
+        "candidate": {
+          "revision": "28.5.0",
+          "document": "synthetic-part",
+          "path": "",
+          "dirty": true,
+          "metrics": {
+            "solid_bodies": 1,
+            "volume_mm3": 60000,
+            "area_mm2": 15200,
+            "center_mm": [
+              0,
+              0,
+              5
+            ],
+            "faces": 6,
+            "edges": 14,
+            "vertices": 8
+          },
+          "feature_types": {
+            "凸台0": "Extrusion"
+          }
+        },
+        "status_only_accepted": true,
+        "compared_accepted": false,
+        "comparison": {
+          "status": "mismatch",
+          "checks": [
+            {
+              "metric": "solid_bodies",
+              "expected": 1,
+              "actual": 1,
+              "absolute_difference": 0,
+              "tolerance": 0,
+              "matched": true
+            },
+            {
+              "metric": "volume_mm3",
+              "expected": 60000.0,
+              "actual": 60000.0,
+              "absolute_difference": 0.0,
+              "tolerance": 0.01,
+              "matched": true
+            },
+            {
+              "metric": "area_mm2",
+              "expected": 15200.0,
+              "actual": 15200.0,
+              "absolute_difference": 0.0,
+              "tolerance": 0.01,
+              "matched": true
+            },
+            {
+              "metric": "center_mm",
+              "expected": [
+                0.0,
+                0.0,
+                5.0
+              ],
+              "actual": [
+                0.0,
+                0.0,
+                5.0
+              ],
+              "absolute_difference": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "tolerance": 0.001,
+              "matched": true
+            },
+            {
+              "metric": "faces",
+              "expected": 6,
+              "actual": 6,
+              "absolute_difference": 0,
+              "tolerance": 0,
+              "matched": true
+            },
+            {
+              "metric": "edges",
+              "expected": 12,
+              "actual": 14,
+              "absolute_difference": 2,
+              "tolerance": 0,
+              "matched": false
+            },
+            {
+              "metric": "vertices",
+              "expected": 8,
+              "actual": 8,
+              "absolute_difference": 0,
+              "tolerance": 0,
+              "matched": true
+            }
+          ],
+          "scope": "Metric agreement only; topology counts are not a BREP equivalence proof, and this does not verify constraints, material, drawing dimensions or design intent.",
+          "feature_types_match": true,
+          "reference_document": "synthetic-part",
+          "candidate_document": "synthetic-part",
+          "live_verification": false
+        }
+      },
+      {
+        "case": "vertices",
+        "injected_fault": true,
+        "upstream_status": "success",
+        "candidate": {
+          "revision": "28.5.0",
+          "document": "synthetic-part",
+          "path": "",
+          "dirty": true,
+          "metrics": {
+            "solid_bodies": 1,
+            "volume_mm3": 60000,
+            "area_mm2": 15200,
+            "center_mm": [
+              0,
+              0,
+              5
+            ],
+            "faces": 6,
+            "edges": 12,
+            "vertices": 10
+          },
+          "feature_types": {
+            "凸台0": "Extrusion"
+          }
+        },
+        "status_only_accepted": true,
+        "compared_accepted": false,
+        "comparison": {
+          "status": "mismatch",
+          "checks": [
+            {
+              "metric": "solid_bodies",
+              "expected": 1,
+              "actual": 1,
+              "absolute_difference": 0,
+              "tolerance": 0,
+              "matched": true
+            },
+            {
+              "metric": "volume_mm3",
+              "expected": 60000.0,
+              "actual": 60000.0,
+              "absolute_difference": 0.0,
+              "tolerance": 0.01,
+              "matched": true
+            },
+            {
+              "metric": "area_mm2",
+              "expected": 15200.0,
+              "actual": 15200.0,
+              "absolute_difference": 0.0,
+              "tolerance": 0.01,
+              "matched": true
+            },
+            {
+              "metric": "center_mm",
+              "expected": [
+                0.0,
+                0.0,
+                5.0
+              ],
+              "actual": [
+                0.0,
+                0.0,
+                5.0
+              ],
+              "absolute_difference": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "tolerance": 0.001,
+              "matched": true
+            },
+            {
+              "metric": "faces",
+              "expected": 6,
+              "actual": 6,
+              "absolute_difference": 0,
+              "tolerance": 0,
+              "matched": true
+            },
+            {
+              "metric": "edges",
+              "expected": 12,
+              "actual": 12,
+              "absolute_difference": 0,
+              "tolerance": 0,
+              "matched": true
+            },
+            {
+              "metric": "vertices",
+              "expected": 8,
+              "actual": 10,
+              "absolute_difference": 2,
+              "tolerance": 0,
+              "matched": false
+            }
+          ],
+          "scope": "Metric agreement only; topology counts are not a BREP equivalence proof, and this does not verify constraints, material, drawing dimensions or design intent.",
+          "feature_types_match": true,
+          "reference_document": "synthetic-part",
+          "candidate_document": "synthetic-part",
+          "live_verification": false
+        }
+      },
+      {
+        "case": "feature_type",
+        "injected_fault": true,
+        "upstream_status": "success",
+        "candidate": {
+          "revision": "28.5.0",
+          "document": "synthetic-part",
+          "path": "",
+          "dirty": true,
+          "metrics": {
+            "solid_bodies": 1,
+            "volume_mm3": 60000,
+            "area_mm2": 15200,
+            "center_mm": [
+              0,
+              0,
+              5
+            ],
+            "faces": 6,
+            "edges": 12,
+            "vertices": 8
+          },
+          "feature_types": {
+            "凸台0": "Imported"
+          }
+        },
+        "status_only_accepted": true,
+        "compared_accepted": false,
+        "comparison": {
+          "status": "mismatch",
+          "checks": [
+            {
+              "metric": "solid_bodies",
+              "expected": 1,
+              "actual": 1,
+              "absolute_difference": 0,
+              "tolerance": 0,
+              "matched": true
+            },
+            {
+              "metric": "volume_mm3",
+              "expected": 60000.0,
+              "actual": 60000.0,
+              "absolute_difference": 0.0,
+              "tolerance": 0.01,
+              "matched": true
+            },
+            {
+              "metric": "area_mm2",
+              "expected": 15200.0,
+              "actual": 15200.0,
+              "absolute_difference": 0.0,
+              "tolerance": 0.01,
+              "matched": true
+            },
+            {
+              "metric": "center_mm",
+              "expected": [
+                0.0,
+                0.0,
+                5.0
+              ],
+              "actual": [
+                0.0,
+                0.0,
+                5.0
+              ],
+              "absolute_difference": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "tolerance": 0.001,
+              "matched": true
+            },
+            {
+              "metric": "faces",
+              "expected": 6,
+              "actual": 6,
+              "absolute_difference": 0,
+              "tolerance": 0,
+              "matched": true
+            },
+            {
+              "metric": "edges",
+              "expected": 12,
+              "actual": 12,
+              "absolute_difference": 0,
+              "tolerance": 0,
+              "matched": true
+            },
+            {
+              "metric": "vertices",
+              "expected": 8,
+              "actual": 8,
+              "absolute_difference": 0,
+              "tolerance": 0,
+              "matched": true
+            }
+          ],
+          "scope": "Metric agreement only; topology counts are not a BREP equivalence proof, and this does not verify constraints, material, drawing dimensions or design intent.",
+          "feature_types_match": false,
+          "reference_document": "synthetic-part",
+          "candidate_document": "synthetic-part",
+          "live_verification": false
+        }
+      },
+      {
+        "case": "identical_control",
+        "injected_fault": false,
+        "upstream_status": "success",
+        "candidate": {
+          "revision": "28.5.0",
+          "document": "synthetic-part",
+          "path": "",
+          "dirty": true,
+          "metrics": {
+            "solid_bodies": 1,
+            "volume_mm3": 60000,
+            "area_mm2": 15200,
+            "center_mm": [
+              0,
+              0,
+              5
+            ],
+            "faces": 6,
+            "edges": 12,
+            "vertices": 8
+          },
+          "feature_types": {
+            "凸台0": "Extrusion"
+          }
+        },
+        "status_only_accepted": true,
+        "compared_accepted": true,
+        "comparison": {
+          "status": "matched",
+          "checks": [
+            {
+              "metric": "solid_bodies",
+              "expected": 1,
+              "actual": 1,
+              "absolute_difference": 0,
+              "tolerance": 0,
+              "matched": true
+            },
+            {
+              "metric": "volume_mm3",
+              "expected": 60000.0,
+              "actual": 60000.0,
+              "absolute_difference": 0.0,
+              "tolerance": 0.01,
+              "matched": true
+            },
+            {
+              "metric": "area_mm2",
+              "expected": 15200.0,
+              "actual": 15200.0,
+              "absolute_difference": 0.0,
+              "tolerance": 0.01,
+              "matched": true
+            },
+            {
+              "metric": "center_mm",
+              "expected": [
+                0.0,
+                0.0,
+                5.0
+              ],
+              "actual": [
+                0.0,
+                0.0,
+                5.0
+              ],
+              "absolute_difference": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "tolerance": 0.001,
+              "matched": true
+            },
+            {
+              "metric": "faces",
+              "expected": 6,
+              "actual": 6,
+              "absolute_difference": 0,
+              "tolerance": 0,
+              "matched": true
+            },
+            {
+              "metric": "edges",
+              "expected": 12,
+              "actual": 12,
+              "absolute_difference": 0,
+              "tolerance": 0,
+              "matched": true
+            },
+            {
+              "metric": "vertices",
+              "expected": 8,
+              "actual": 8,
+              "absolute_difference": 0,
+              "tolerance": 0,
+              "matched": true
+            }
+          ],
+          "scope": "Metric agreement only; topology counts are not a BREP equivalence proof, and this does not verify constraints, material, drawing dimensions or design intent.",
+          "feature_types_match": true,
+          "reference_document": "synthetic-part",
+          "candidate_document": "synthetic-part",
+          "live_verification": false
+        }
+      },
+      {
+        "case": "within_tolerance_control",
+        "injected_fault": false,
+        "upstream_status": "success",
+        "candidate": {
+          "revision": "28.5.0",
+          "document": "synthetic-part",
+          "path": "",
+          "dirty": true,
+          "metrics": {
+            "solid_bodies": 1,
+            "volume_mm3": 60000.005,
+            "area_mm2": 15200.005,
+            "center_mm": [
+              0.0005,
+              0,
+              5
+            ],
+            "faces": 6,
+            "edges": 12,
+            "vertices": 8
+          },
+          "feature_types": {
+            "凸台0": "Extrusion"
+          }
+        },
+        "status_only_accepted": true,
+        "compared_accepted": true,
+        "comparison": {
+          "status": "matched",
+          "checks": [
+            {
+              "metric": "solid_bodies",
+              "expected": 1,
+              "actual": 1,
+              "absolute_difference": 0,
+              "tolerance": 0,
+              "matched": true
+            },
+            {
+              "metric": "volume_mm3",
+              "expected": 60000.0,
+              "actual": 60000.005,
+              "absolute_difference": 0.004999999997380655,
+              "tolerance": 0.01,
+              "matched": true
+            },
+            {
+              "metric": "area_mm2",
+              "expected": 15200.0,
+              "actual": 15200.005,
+              "absolute_difference": 0.004999999999199645,
+              "tolerance": 0.01,
+              "matched": true
+            },
+            {
+              "metric": "center_mm",
+              "expected": [
+                0.0,
+                0.0,
+                5.0
+              ],
+              "actual": [
+                0.0005,
+                0.0,
+                5.0
+              ],
+              "absolute_difference": [
+                0.0005,
+                0.0,
+                0.0
+              ],
+              "tolerance": 0.001,
+              "matched": true
+            },
+            {
+              "metric": "faces",
+              "expected": 6,
+              "actual": 6,
+              "absolute_difference": 0,
+              "tolerance": 0,
+              "matched": true
+            },
+            {
+              "metric": "edges",
+              "expected": 12,
+              "actual": 12,
+              "absolute_difference": 0,
+              "tolerance": 0,
+              "matched": true
+            },
+            {
+              "metric": "vertices",
+              "expected": 8,
+              "actual": 8,
+              "absolute_difference": 0,
+              "tolerance": 0,
+              "matched": true
+            }
+          ],
+          "scope": "Metric agreement only; topology counts are not a BREP equivalence proof, and this does not verify constraints, material, drawing dimensions or design intent.",
+          "feature_types_match": true,
+          "reference_document": "synthetic-part",
+          "candidate_document": "synthetic-part",
+          "live_verification": false
+        }
+      }
+    ],
+    "known_scope_limits": [
+      {
+        "case": "same_metrics_different_document_label",
+        "status": "matched",
+        "live_verification": false,
+        "requires": "Caller must guard document identity and obtain fresh live snapshots"
+      }
+    ]
+  },
+  "stop_conditions": [
+    {
+      "scenario": "dirty_document",
+      "status": "error",
+      "error_code": "ACTIVE_DOCUMENT_NOT_CLEAN_COPY",
+      "bridge_calls": [
+        "check"
+      ],
+      "study_creation_calls": 0,
+      "automatic_retries": 0,
+      "archive_created": false
+    },
+    {
+      "scenario": "unknown_creation",
+      "status": "partial",
+      "error_code": "STEP_FAILED",
+      "bridge_calls": [
+        "check",
+        "inspect_geometry",
+        "resolve_geometry",
+        "create_static_study"
+      ],
+      "study_creation_calls": 1,
+      "automatic_retries": 0,
+      "archive_created": false
+    }
+  ]
+}
