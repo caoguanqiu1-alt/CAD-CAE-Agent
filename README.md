@@ -265,6 +265,7 @@ powershell -NoProfile -File .\simulation\build.ps1 -InstallDir $env:SW2020_INSTA
 
 | 想了解的内容 | 入口 |
 | --- | --- |
+| SWMCP 论文 PDF | [SWMCP-Paper.pdf](docs/papers/SWMCP-Paper.pdf) |
 | 安装、MCP 配置与最小仿真流程 | [中文安装与演示](README_CAE.md) |
 | 建模计划、重复执行保护与验收 | [SW2020 工作流](SW2020_WORKFLOW.md) |
 | 多载荷、接触与多网格计划 | [Simulation 计划接口](SIMULATION_PHASE3.md) |
