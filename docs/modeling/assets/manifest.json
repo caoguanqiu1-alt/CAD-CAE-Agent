@@ -1,0 +1,69 @@
+{
+  "updated": "2026-09-30",
+  "images": [
+    {
+      "asset": "pulley-drawing.png",
+      "case": "皮带轮",
+      "role": "drawing",
+      "original_file": "codex-clipboard-d33faaa3-91b2-49d3-889b-f49421a8a765.png",
+      "bytes": 551575,
+      "sha256": "480fe593dfe4696c7b0f08eea1285374453e2d69689c5bb16cdec1c32f5dbece"
+    },
+    {
+      "asset": "pulley-model.png",
+      "case": "皮带轮",
+      "role": "model",
+      "original_file": "皮带轮_SW2020_预览.png",
+      "bytes": 172922,
+      "sha256": "22c2509446af26d6229939069cb0b7ac5fd9883e7b0acac91c63fea0a4bc0657"
+    },
+    {
+      "asset": "valve-drawing.png",
+      "case": "093-1 阀体",
+      "role": "drawing",
+      "original_file": "valve-drawing.png",
+      "bytes": 177727,
+      "sha256": "5496da9a42fec162b1d659fc2a008fb9a571d50d83e20f97b22eb29af2c68da9"
+    },
+    {
+      "asset": "valve-model.png",
+      "case": "093-1 阀体",
+      "role": "model",
+      "original_file": "ValveBody_093-1.png",
+      "bytes": 153495,
+      "sha256": "78e2c969f4276b7dc6a5bb7135731acd5aafc0d13bc7aa28e9a74a11ad53a2e6"
+    },
+    {
+      "asset": "housing-drawing.png",
+      "case": "ZZJS-2015 壳体",
+      "role": "drawing",
+      "original_file": "codex-clipboard-ee36bef2-40ab-4715-919d-003253706b8f.png",
+      "bytes": 2875331,
+      "sha256": "ee57767ebbbdbf327a0e9a6990a9f155127f652962985c787bffda76ff446b25"
+    },
+    {
+      "asset": "housing-model.png",
+      "case": "ZZJS-2015 壳体",
+      "role": "model",
+      "original_file": "壳体_外观核对2.png",
+      "bytes": 134913,
+      "sha256": "0ecf70ca875dd1a7f292f9c636f84b1a432b1d35882551710d58830084ca1027"
+    },
+    {
+      "asset": "pump-drawing.png",
+      "case": "ZZBLJT-01 泵体",
+      "role": "drawing",
+      "original_file": "codex-clipboard-783e63f7-d60e-4f85-b5d9-4f01ecc9d4ae.png",
+      "bytes": 397337,
+      "sha256": "53a763c198c04ceb06d835205c0f8c044a337a02cdaec85685a668a71fa04237"
+    },
+    {
+      "asset": "pump-model.png",
+      "case": "ZZBLJT-01 泵体",
+      "role": "model",
+      "original_file": "泵体_三维.png",
+      "bytes": 142538,
+      "sha256": "96441f2c9d5cf9c08e5fbc99f5e7ddb09fd849f005970078470096c03ebaaf74"
+    }
+  ]
+}

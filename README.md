@@ -1,8 +1,58 @@
 # CAD-CAE Agent — SolidWorks 建模与仿真
 
-**中文文档 V2（2026-09-29）· 仿真图集更新于 2026-09-30**
+**中文文档 V2（2026-09-29）· 建模与仿真图集更新于 2026-09-30**
 
 本项目基于 [andrewbartels1/SolidworksMCP-python](https://github.com/andrewbartels1/SolidworksMCP-python) 的 MIT 开源代码，扩展了在 **SOLIDWORKS 2020 SP5** 上运行的参数化建模和 Simulation 静力分析流程。保留上游版权及许可证；[上游英文说明](README.en.md)单独存档。
+
+## CAD 建模案例：从工程图到三维模型
+
+以下四个案例均来自用户提供的工程图，已有真实 **SOLIDWORKS 2020** 建模及原生文件保存记录。左侧为输入工程图，右侧为实际建模预览；点击图片可查看原图。
+
+按本次建模涉及的特征、空间关系和读图复杂度，由易到难排列： **皮带轮 → 阀体 → 壳体 → 泵体**。这是案例间的相对排序；模型达到的完成范围见各项说明和[建模证据记录](docs/modeling/showcase.md)。
+
+### 1. 皮带轮 · 基础
+
+**展示能力：** 轮毂、轮辐、轮缘、通孔、键槽与圆角。
+
+<table>
+<tr><th width="50%">用户提供的工程图</th><th width="50%">真实 SOLIDWORKS 建模结果</th></tr>
+<tr><td align="center"><a href="docs/modeling/assets/pulley-drawing.png"><img src="docs/modeling/assets/pulley-drawing.png" width="100%" alt="皮带轮原工程图"></a></td><td align="center"><a href="docs/modeling/assets/pulley-model.png"><img src="docs/modeling/assets/pulley-model.png" width="100%" alt="皮带轮的 SW2020 建模预览"></a></td></tr>
+</table>
+
+SW2020 参考重建已保存，1 个实体；主要尺寸和体积已检查。 8° 内侧斜壁尚未建立；采用凸台特征，未复现参考中的三个旋转特征。
+
+### 2. 093-1 阀体 · 进阶
+
+**展示能力：** 法兰、放样过渡、交叉接口、阶梯流道与安装孔。
+
+<table>
+<tr><th width="50%">用户提供的工程图</th><th width="50%">真实 SOLIDWORKS 建模结果</th></tr>
+<tr><td align="center"><a href="docs/modeling/assets/valve-drawing.png"><img src="docs/modeling/assets/valve-drawing.png" width="100%" alt="093-1 阀体原工程图"></a></td><td align="center"><a href="docs/modeling/assets/valve-model.png"><img src="docs/modeling/assets/valve-model.png" width="100%" alt="093-1 阀体的 SW2020 建模预览"></a></td></tr>
+</table>
+
+真实 COM/MCP 建模已保存，1 个实体，重建成功；包围尺寸 75 × 56 × 75 mm。 未标注外形按用户允许合理补形；接口未生成实体螺纹，部分铸造内腔与圆角有简化。
+
+### 3. ZZJS-2015 壳体 · 复杂
+
+**展示能力：** 曲面外形、抽壳、螺钉柱、加强筋、窗口与随形凸字。
+
+<table>
+<tr><th width="50%">用户提供的工程图</th><th width="50%">真实 SOLIDWORKS 建模结果</th></tr>
+<tr><td align="center"><a href="docs/modeling/assets/housing-drawing.png"><img src="docs/modeling/assets/housing-drawing.png" width="100%" alt="ZZJS-2015 壳体原工程图"></a></td><td align="center"><a href="docs/modeling/assets/housing-model.png"><img src="docs/modeling/assets/housing-model.png" width="100%" alt="ZZJS-2015 壳体的 SW2020 建模预览"></a></td></tr>
+</table>
+
+原生重建模型已保存，1 个实体，重建检查通过；包含 2 mm 壁厚与内部结构。 用户停止任务前已保存；最终保存重开验证未完成，现有预览来自建模过程。
+
+### 4. ZZBLJT-01 泵体 · 综合
+
+**展示能力：** 偏心泵腔、多孔系、斜向流道、装饰螺纹与工程图。
+
+<table>
+<tr><th width="50%">用户提供的工程图</th><th width="50%">真实 SOLIDWORKS 建模结果</th></tr>
+<tr><td align="center"><a href="docs/modeling/assets/pump-drawing.png"><img src="docs/modeling/assets/pump-drawing.png" width="100%" alt="ZZBLJT-01 泵体原工程图"></a></td><td align="center"><a href="docs/modeling/assets/pump-model.png"><img src="docs/modeling/assets/pump-model.png" width="100%" alt="ZZBLJT-01 泵体的 SW2020 建模预览"></a></td></tr>
+</table>
+
+快速重建已保存，1 个连续实体，重建成功；另完成四视图参考工程图和 10 项关联尺寸核验。 部分铸造过渡、B–B 流道截面与 C–C 台阶有简化；工程图对应快速重建版。
 
 ## CAE 仿真过程与结果图集
 
