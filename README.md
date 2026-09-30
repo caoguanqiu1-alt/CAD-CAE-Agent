@@ -1,6 +1,6 @@
 # CAD-CAE Agent — SolidWorks 建模与仿真
 
-**中文文档 V3 · 2026-09-30 更新 · 真实 CAD/CAE 案例 + 可复跑对照实验**
+**CAD/CAE 案例 + 可复跑对照实验**
 
 让 Agent 将工程图和分析目标转成 **可执行的计划、真实的软件操作和可检查的结果**：由 Skill 组织工作流程，MCP 提供工具接口，SOLIDWORKS 2020 / Simulation 执行建模与静力分析。
 
