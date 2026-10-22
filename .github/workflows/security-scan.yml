@@ -75,15 +75,18 @@ jobs:
           python-version: '3.13'
 
       - name: Install package + pip-audit
+        shell: bash
         run: |
-          pip install --upgrade pip
-          pip install pip-audit
-          pip install -e ".[dev,docs]" --ignore-requires-python 2>/dev/null || \
-            pip install -e "." --ignore-requires-python 2>/dev/null || true
+          python -m pip install --upgrade pip
+          python -m pip install pip-audit
+          python -m pip install -e ".[dev,docs]"
 
       - name: Audit Python dependencies
-        run: pip-audit --desc --output-format markdown 2>&1 | tee pip-audit-results.md
-        continue-on-error: false
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip_audit --desc --format markdown \
+            2>&1 | tee pip-audit-results.md
 
   # ── 3. Bandit — Python SAST ─────────────────────────────────────────────────
   bandit:
