@@ -1,8 +1,2 @@
-# Trivy ignore — exclude generated/cache directories from scanning
-**/.mypy_cache/**
-**/__pycache__/**
-**/.pytest_cache/**
-**/htmlcov/**
-**/.venv/**
-**/node_modules/**
-**/*.pyc
+# Findings IDs only. Directory exclusions are in .github/trivy.yaml.
+# No vulnerabilities, secrets or misconfigurations are suppressed.
