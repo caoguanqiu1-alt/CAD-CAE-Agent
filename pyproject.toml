@@ -28,7 +28,7 @@ classifiers = [
 ]
 
 dependencies = [
-    "fastmcp>=3.2.2",
+    "fastmcp>=3.4.10",
     "mcp>=1.28.1",
     "pydantic>=2.5.0",
     "pydantic-ai>=1.56.0",
@@ -49,7 +49,7 @@ dependencies = [
     "charset-normalizer>=3.4.0",
     "typer>=0.12.0",
     "rich>=13.0.0",
-    "pyasn1>=0.6.4",
+    "pyasn1>=0.6.5",
 ]
 
 [project.optional-dependencies]
@@ -68,7 +68,7 @@ dev = [
     "coverage[toml]>=7.3.0",
     "mypy>=1.6.0",
     "ruff>=0.1.0",
-    "black>=23.9.0",
+    "black>=26.10.1",
     
     # Documentation validation
     "pydocstyle>=6.3.0",  # Google style docstring validation
@@ -299,3 +299,14 @@ unfixable = ["B"]
 
 [tool.ruff.lint.isort]
 known-first-party = ["solidworks_mcp"]
+[tool.uv]
+# Security floors for transitive dependencies; not an override of upstream constraints.
+constraint-dependencies = [
+    "authlib>=1.9.5",
+    "dnspython>=2.9.0",
+    "filelock>=4.2.1",
+    "joserfc>=1.7.6",
+    "virtualenv>=21.14.13",
+    "setuptools>=84.1.0",
+    "torch>=2.13.0",
+]

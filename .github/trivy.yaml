@@ -1,0 +1,31 @@
+# Shared by scanning, SARIF conversion and the final gate.
+severity:
+  - CRITICAL
+  - HIGH
+timeout: 10m
+scan:
+  scanners:
+    - vuln
+    - secret
+    - misconfig
+  skip-dirs:
+    - .venv
+    - '**/.venv'
+    - .mypy_cache
+    - '**/.mypy_cache'
+    - __pycache__
+    - '**/__pycache__'
+    - .pytest_cache
+    - '**/.pytest_cache'
+    - htmlcov
+    - '**/htmlcov'
+    - node_modules
+    - '**/node_modules'
+    - .cache/trivy
+  skip-files:
+    - '*.pyc'
+    - '**/*.pyc'
+pkg:
+  include-dev-deps: true
+vulnerability:
+  ignore-unfixed: false
